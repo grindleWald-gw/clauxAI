@@ -1,0 +1,429 @@
+{
+  "courses": [
+    {
+      "id": "html",
+      "category": "HTML",
+      "title": "HTML Basics",
+      "subtitle": "Learn structure of web pages easily.",
+      "icon": "iconHTML",
+      "detail": {
+        "tabs": [
+          {
+            "id": "overview",
+            "title": "Overview",
+            "sections": [
+              {
+                "id": "intro",
+                "kind": "heading",
+                "title": "Introduction:",
+                "text": "HTML, short for HyperText Markup Language, is the standard markup language used to create and structure content on the web. It serves as the backbone of every webpage by defining elements such as headings, paragraphs, links, images, and forms.",
+                "items": null
+              },
+              {
+                "id": "what-is",
+                "kind": "heading",
+                "title": "What is HTML",
+                "text": "HTML is not a programming language, but a markup language that tells browsers how to display content. Each piece of content is wrapped in tags that describe its purpose.",
+                "items": null
+              },
+              {
+                "id": "purpose",
+                "kind": "heading",
+                "title": "Purpose of HTML",
+                "text": "The primary goal of HTML is to structure content meaningfully so users and search engines understand what each section represents.",
+                "items": null
+              },
+              {
+                "id": "core-concepts",
+                "kind": "heading",
+                "title": "Core Concepts of HTML",
+                "text": null,
+                "items": [
+                  { "term": "Elements", "definition": "Building blocks of HTML pages" },
+                  { "term": "Tags", "definition": "Keywords enclosed in angle brackets" },
+                  { "term": "Attributes", "definition": "Extra information about elements" },
+                  { "term": "Structure", "definition": "Hierarchy of page layout" },
+                  { "term": "Semantic meaning", "definition": "Describes purpose of content" }
+                ]
+              },
+              {
+                "id": "structure-guidelines",
+                "kind": "heading",
+                "title": "HTML Document Structure Guidelines",
+                "text": "Every HTML document begins with a root <html> element. Inside it, two main sections exist: <head> for metadata and <body> for visible content.",
+                "items": null
+              },
+              {
+                "id": "head-guidelines",
+                "kind": "heading",
+                "title": "Head Section Guidelines",
+                "text": "The <head> section usually contains title tags, meta descriptions, charset settings, and links to CSS/JS files. Metadata here is essential for browser behavior and SEO optimization.",
+                "items": null
+              }
+            ]
+          },
+          {
+            "id": "examples",
+            "title": "Examples",
+            "sections": [
+              {
+                "id": "examples-intro",
+                "kind": "paragraph",
+                "title": null,
+                "text": "Explore practical HTML examples including semantic layouts, forms, media embedding, and accessible navigation patterns.",
+                "items": null
+              }
+            ]
+          },
+          {
+            "id": "assignments",
+            "title": "Assignments",
+            "sections": [
+              {
+                "id": "assignments-intro",
+                "kind": "paragraph",
+                "title": null,
+                "text": "Build a personal portfolio page, a product landing section, and a contact form using semantic HTML tags.",
+                "items": null
+              }
+            ]
+          },
+          {
+            "id": "career",
+            "title": "Career Growth",
+            "sections": [
+              {
+                "id": "career-intro",
+                "kind": "paragraph",
+                "title": null,
+                "text": "HTML skills support roles in frontend development, UI engineering, email template design, and content management.",
+                "items": null
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "css",
+      "category": "CSS",
+      "title": "CSS Styling",
+      "subtitle": "Design beautiful and responsive web pages.",
+      "icon": "iconCSS",
+      "detail": {
+        "tabs": [
+          {
+            "id": "overview",
+            "title": "Overview",
+            "sections": [
+              {
+                "id": "intro",
+                "kind": "heading",
+                "title": "Introduction:",
+                "text": "CSS, or Cascading Style Sheets, controls how HTML elements look and behave on screen. It handles colors, spacing, typography, layout, and responsive design.",
+                "items": null
+              },
+              {
+                "id": "what-is",
+                "kind": "heading",
+                "title": "What is CSS",
+                "text": "CSS separates presentation from structure, allowing developers to style many pages consistently from a single stylesheet.",
+                "items": null
+              },
+              {
+                "id": "core-concepts",
+                "kind": "heading",
+                "title": "Core Concepts of CSS",
+                "text": null,
+                "items": [
+                  { "term": "Selectors", "definition": "Target HTML elements for styling" },
+                  { "term": "Box model", "definition": "Margin, border, padding, and content" },
+                  { "term": "Flexbox", "definition": "One-dimensional layout system" },
+                  { "term": "Grid", "definition": "Two-dimensional layout system" },
+                  { "term": "Media queries", "definition": "Responsive breakpoints for devices" }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "examples",
+            "title": "Examples",
+            "sections": [
+              { "id": "examples-intro", "kind": "paragraph", "title": null, "text": "Practice card layouts, responsive navbars, dark themes, and animation transitions.", "items": null }
+            ]
+          },
+          {
+            "id": "assignments",
+            "title": "Assignments",
+            "sections": [
+              { "id": "assignments-intro", "kind": "paragraph", "title": null, "text": "Style a dashboard, recreate a mobile-first landing page, and build a reusable component library.", "items": null }
+            ]
+          },
+          {
+            "id": "career",
+            "title": "Career Growth",
+            "sections": [
+              { "id": "career-intro", "kind": "paragraph", "title": null, "text": "CSS expertise is essential for frontend developers, UI designers, and design-system engineers.", "items": null }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "js",
+      "category": "JS",
+      "title": "JavaScript Fundamentals",
+      "subtitle": "Understand logic and interactive web features.",
+      "icon": "iconJS",
+      "detail": {
+        "tabs": [
+          {
+            "id": "overview",
+            "title": "Overview",
+            "sections": [
+              {
+                "id": "intro",
+                "kind": "heading",
+                "title": "Introduction:",
+                "text": "JavaScript adds interactivity to the web. It powers dynamic content, form validation, API calls, and modern single-page applications.",
+                "items": null
+              },
+              {
+                "id": "core-concepts",
+                "kind": "heading",
+                "title": "Core Concepts of JavaScript",
+                "text": null,
+                "items": [
+                  { "term": "Variables", "definition": "Store and reference data values" },
+                  { "term": "Functions", "definition": "Reusable blocks of logic" },
+                  { "term": "DOM", "definition": "Interface to update page content" },
+                  { "term": "Events", "definition": "Respond to user interactions" },
+                  { "term": "Async", "definition": "Handle timers, promises, and fetch" }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "examples",
+            "title": "Examples",
+            "sections": [
+              { "id": "examples-intro", "kind": "paragraph", "title": null, "text": "Build interactive forms, todo lists, fetch-based widgets, and simple browser games.", "items": null }
+            ]
+          },
+          {
+            "id": "assignments",
+            "title": "Assignments",
+            "sections": [
+              { "id": "assignments-intro", "kind": "paragraph", "title": null, "text": "Create a weather app, a calculator, and a searchable data table with sorting.", "items": null }
+            ]
+          },
+          {
+            "id": "career",
+            "title": "Career Growth",
+            "sections": [
+              { "id": "career-intro", "kind": "paragraph", "title": null, "text": "JavaScript opens paths into frontend, full-stack, mobile, and automation engineering.", "items": null }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "python",
+      "category": "Python",
+      "title": "Python Programming",
+      "subtitle": "Learn coding from beginner to advanced.",
+      "icon": "iconPython",
+      "detail": {
+        "tabs": [
+          {
+            "id": "overview",
+            "title": "Overview",
+            "sections": [
+              {
+                "id": "intro",
+                "kind": "heading",
+                "title": "Introduction:",
+                "text": "Python is a versatile, readable programming language used for web development, automation, data science, AI, and scripting.",
+                "items": null
+              },
+              {
+                "id": "what-is",
+                "kind": "heading",
+                "title": "What is Python",
+                "text": "Python emphasizes clean syntax and rapid development. Its large ecosystem makes it ideal for beginners and professionals alike.",
+                "items": null
+              },
+              {
+                "id": "purpose",
+                "kind": "heading",
+                "title": "Purpose of Python",
+                "text": "Python helps teams build prototypes quickly, automate repetitive tasks, and process data at scale.",
+                "items": null
+              },
+              {
+                "id": "core-concepts",
+                "kind": "heading",
+                "title": "Core Concepts of Python",
+                "text": null,
+                "items": [
+                  { "term": "Syntax", "definition": "Indentation-based readable code blocks" },
+                  { "term": "Data types", "definition": "Strings, numbers, lists, dicts, and more" },
+                  { "term": "Functions", "definition": "Reusable logic with parameters" },
+                  { "term": "Modules", "definition": "Organize and share code packages" },
+                  { "term": "OOP", "definition": "Classes and objects for complex systems" }
+                ]
+              },
+              {
+                "id": "structure-guidelines",
+                "kind": "heading",
+                "title": "Python Project Structure Guidelines",
+                "text": "Organize projects with clear modules, virtual environments, requirements files, and test folders for maintainability.",
+                "items": null
+              },
+              {
+                "id": "head-guidelines",
+                "kind": "heading",
+                "title": "Environment Setup Guidelines",
+                "text": "Use version managers, isolated environments, and linting tools to keep Python projects consistent across machines.",
+                "items": null
+              }
+            ]
+          },
+          {
+            "id": "examples",
+            "title": "Examples",
+            "sections": [
+              { "id": "examples-intro", "kind": "paragraph", "title": null, "text": "Work through scripts for file automation, REST APIs, data parsing, and simple machine-learning demos.", "items": null }
+            ]
+          },
+          {
+            "id": "assignments",
+            "title": "Assignments",
+            "sections": [
+              { "id": "assignments-intro", "kind": "paragraph", "title": null, "text": "Build a CLI tool, a Flask API, and a data analysis notebook with charts.", "items": null }
+            ]
+          },
+          {
+            "id": "career",
+            "title": "Career Growth",
+            "sections": [
+              { "id": "career-intro", "kind": "paragraph", "title": null, "text": "Python skills support careers in backend engineering, data science, DevOps, and AI product development.", "items": null }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "react",
+      "category": "React",
+      "title": "React Development",
+      "subtitle": "Build modern dynamic user interfaces.",
+      "icon": "iconReact",
+      "detail": {
+        "tabs": [
+          {
+            "id": "overview",
+            "title": "Overview",
+            "sections": [
+              { "id": "intro", "kind": "heading", "title": "Introduction:", "text": "React is a JavaScript library for building component-based user interfaces with declarative rendering.", "items": null },
+              { "id": "core-concepts", "kind": "heading", "title": "Core Concepts of React", "text": null, "items": [
+                { "term": "Components", "definition": "Reusable UI building blocks" },
+                { "term": "Props", "definition": "Pass data into components" },
+                { "term": "State", "definition": "Manage changing UI data" },
+                { "term": "Hooks", "definition": "Functional state and lifecycle tools" },
+                { "term": "Virtual DOM", "definition": "Efficient UI updates" }
+              ]}
+            ]
+          },
+          { "id": "examples", "title": "Examples", "sections": [{ "id": "e1", "kind": "paragraph", "title": null, "text": "Build counters, modals, routed pages, and reusable form components.", "items": null }] },
+          { "id": "assignments", "title": "Assignments", "sections": [{ "id": "a1", "kind": "paragraph", "title": null, "text": "Create a task manager, a product catalog, and a dashboard with charts.", "items": null }] },
+          { "id": "career", "title": "Career Growth", "sections": [{ "id": "c1", "kind": "paragraph", "title": null, "text": "React is widely used in frontend and full-stack roles across startups and enterprise teams.", "items": null }] }
+        ]
+      }
+    },
+    {
+      "id": "backend",
+      "category": "Backend",
+      "title": "Backend Basics",
+      "subtitle": "Learn server side development concepts clearly.",
+      "icon": "iconBackend",
+      "detail": {
+        "tabs": [
+          {
+            "id": "overview",
+            "title": "Overview",
+            "sections": [
+              { "id": "intro", "kind": "heading", "title": "Introduction:", "text": "Backend development handles data storage, business logic, authentication, and APIs that power applications.", "items": null },
+              { "id": "core-concepts", "kind": "heading", "title": "Core Concepts of Backend", "text": null, "items": [
+                { "term": "APIs", "definition": "Endpoints for client communication" },
+                { "term": "Databases", "definition": "Persistent structured storage" },
+                { "term": "Auth", "definition": "Secure user identity and access" },
+                { "term": "Caching", "definition": "Improve performance and scale" },
+                { "term": "Deployment", "definition": "Ship services to production" }
+              ]}
+            ]
+          },
+          { "id": "examples", "title": "Examples", "sections": [{ "id": "e1", "kind": "paragraph", "title": null, "text": "Explore REST routes, database models, middleware, and logging patterns.", "items": null }] },
+          { "id": "assignments", "title": "Assignments", "sections": [{ "id": "a1", "kind": "paragraph", "title": null, "text": "Build a CRUD API, add JWT auth, and deploy a service to the cloud.", "items": null }] },
+          { "id": "career", "title": "Career Growth", "sections": [{ "id": "c1", "kind": "paragraph", "title": null, "text": "Backend skills lead to roles in API engineering, platform development, and cloud architecture.", "items": null }] }
+        ]
+      }
+    },
+    {
+      "id": "dsa",
+      "category": "Data Structure",
+      "title": "Data Structures",
+      "subtitle": "Master efficient problem solving techniques.",
+      "icon": "iconDSA",
+      "detail": {
+        "tabs": [
+          {
+            "id": "overview",
+            "title": "Overview",
+            "sections": [
+              { "id": "intro", "kind": "heading", "title": "Introduction:", "text": "Data structures organize information so algorithms can process it efficiently in software systems.", "items": null },
+              { "id": "core-concepts", "kind": "heading", "title": "Core Concepts", "text": null, "items": [
+                { "term": "Arrays", "definition": "Indexed collections of values" },
+                { "term": "Linked lists", "definition": "Node-based sequential structures" },
+                { "term": "Stacks & queues", "definition": "LIFO and FIFO processing" },
+                { "term": "Trees", "definition": "Hierarchical data organization" },
+                { "term": "Hash maps", "definition": "Fast key-value lookups" }
+              ]}
+            ]
+          },
+          { "id": "examples", "title": "Examples", "sections": [{ "id": "e1", "kind": "paragraph", "title": null, "text": "Solve search, sorting, traversal, and optimization problems step by step.", "items": null }] },
+          { "id": "assignments", "title": "Assignments", "sections": [{ "id": "a1", "kind": "paragraph", "title": null, "text": "Implement core structures, analyze complexity, and practice interview questions.", "items": null }] },
+          { "id": "career", "title": "Career Growth", "sections": [{ "id": "c1", "kind": "paragraph", "title": null, "text": "Strong DSA fundamentals support software engineering interviews and system design.", "items": null }] }
+        ]
+      }
+    },
+    {
+      "id": "api",
+      "category": "API",
+      "title": "API Integration",
+      "subtitle": "Connect apps with external services easily.",
+      "icon": "iconAPI",
+      "detail": {
+        "tabs": [
+          {
+            "id": "overview",
+            "title": "Overview",
+            "sections": [
+              { "id": "intro", "kind": "heading", "title": "Introduction:", "text": "API integration connects your application to third-party services for payments, maps, auth, AI, and more.", "items": null },
+              { "id": "core-concepts", "kind": "heading", "title": "Core Concepts of APIs", "text": null, "items": [
+                { "term": "REST", "definition": "Resource-based HTTP communication" },
+                { "term": "JSON", "definition": "Common data exchange format" },
+                { "term": "Authentication", "definition": "API keys, OAuth, and tokens" },
+                { "term": "Rate limits", "definition": "Control request volume" },
+                { "term": "Error handling", "definition": "Graceful failure and retries" }
+              ]}
+            ]
+          },
+          { "id": "examples", "title": "Examples", "sections": [{ "id": "e1", "kind": "paragraph", "title": null, "text": "Integrate weather, payment, and AI APIs with secure request handling.", "items": null }] },
+          { "id": "assignments", "title": "Assignments", "sections": [{ "id": "a1", "kind": "paragraph", "title": null, "text": "Build an API client, add caching, and document endpoints with examples.", "items": null }] },
+          { "id": "career", "title": "Career Growth", "sections": [{ "id": "c1", "kind": "paragraph", "title": null, "text": "API skills are critical for full-stack developers and integration engineers.", "items": null }] }
+        ]
+      }
+    }
+  ]
+}
