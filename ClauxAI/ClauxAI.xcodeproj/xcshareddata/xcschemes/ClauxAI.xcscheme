@@ -50,13 +50,6 @@
             ReferencedContainer = "container:ClauxAI.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
-      <EnvironmentVariables>
-         <EnvironmentVariable
-            key = "ANTHROPIC_API_KEY"
-            value = "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"
-            isEnabled = "YES">
-         </EnvironmentVariable>
-      </EnvironmentVariables>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"

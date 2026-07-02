@@ -10,10 +10,13 @@
 		08130B222FB4EB9900B9F7A2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 08130B1E2FB4EB9900B9F7A2 /* Assets.xcassets */; };
 		08130B232FB4EB9900B9F7A2 /* ClauxAIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08130B1F2FB4EB9900B9F7A2 /* ClauxAIApp.swift */; };
 		08130B2D2FB4ED6500B9F7A2 /* ChatInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08130B2C2FB4ED6500B9F7A2 /* ChatInputView.swift */; };
+		0817A02A2FF6A45200A6922A /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0817A0292FF6A45200A6922A /* ResultView.swift */; };
 		0819E2A42FD8097B0070DC86 /* SmartToolsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0819E2A32FD8097B0070DC86 /* SmartToolsView.swift */; };
 		0819E2A62FD80A100070DC86 /* SmartToolsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0819E2A52FD80A100070DC86 /* SmartToolsModel.swift */; };
 		0819E2A62FD80B730070DC86 /* LearnWithClaux.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0819E2A52FD80B730070DC86 /* LearnWithClaux.swift */; };
 		0819E2A82FD80C200070DC86 /* LearnWithClauxModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0819E2A72FD80C200070DC86 /* LearnWithClauxModel.swift */; };
+		088B2AB42FF1878E0001A903 /* PurchaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088B2AB32FF1878E0001A903 /* PurchaseManager.swift */; };
+		088B2AB72FF188390001A903 /* PremiumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088B2AB62FF188390001A903 /* PremiumView.swift */; };
 		089AA04F2FE818BB00FC022B /* LegalLetterWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089AA04E2FE818BB00FC022B /* LegalLetterWriter.swift */; };
 		089AA0542FE820DE00FC022B /* NDAGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089AA0532FE820DE00FC022B /* NDAGenerator.swift */; };
 		089AA0562FE820F500FC022B /* SmartToolsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089AA0552FE820F500FC022B /* SmartToolsModels.swift */; };
@@ -31,6 +34,7 @@
 		089AA0722FE84E8000FC022B /* learn_courses.json in Resources */ = {isa = PBXBuildFile; fileRef = 089AA0712FE84E8000FC022B /* learn_courses.json */; };
 		089AA0722FEB1B7100FC022B /* ClaudeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089AA0712FEB1B7100FC022B /* ClaudeAPI.swift */; };
 		089AA0732FEB2C0000FC022B /* ClauxAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089AA0742FEB2C0000FC022B /* ClauxAPIService.swift */; };
+		089AA0782FEB400000FC022B /* OpenAIAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089AA0772FEB400000FC022B /* OpenAIAPI.swift */; };
 		08FAEF9D2FBB04030066F0EE /* SidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FAEF9C2FBB04030066F0EE /* SidebarView.swift */; };
 		08FAEF9F2FBB040F0066F0EE /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FAEF9E2FBB040F0066F0EE /* HomeView.swift */; };
 		08FAEFA12FBB041A0066F0EE /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FAEFA02FBB041A0066F0EE /* RootView.swift */; };
@@ -62,18 +66,21 @@
 		08FAEFE22FCC532A0066F0EE /* ResponseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FAEFE12FCC532A0066F0EE /* ResponseVC.swift */; };
 		08FAEFE42FCC54000066F0EE /* AppScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FAEFE32FCC54000066F0EE /* AppScreen.swift */; };
 		08FAEFE72FCC5D480066F0EE /* BugFixerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FAEFE62FCC5D480066F0EE /* BugFixerView.swift */; };
+		08FAEFED2FCC60110066F0EE /* DualModeResponseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FAEFEC2FCC60100066F0EE /* DualModeResponseView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		08130B102FB4E96800B9F7A2 /* ClauxAI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClauxAI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		08130B1E2FB4EB9900B9F7A2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		08130B1F2FB4EB9900B9F7A2 /* ClauxAIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClauxAIApp.swift; sourceTree = "<group>"; };
-		089AA0762FEB3A0000FC022B /* ClauxAI.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ClauxAI.entitlements; sourceTree = "<group>"; };
 		08130B2C2FB4ED6500B9F7A2 /* ChatInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatInputView.swift; sourceTree = "<group>"; };
+		0817A0292FF6A45200A6922A /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
 		0819E2A32FD8097B0070DC86 /* SmartToolsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartToolsView.swift; sourceTree = "<group>"; };
 		0819E2A52FD80A100070DC86 /* SmartToolsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartToolsModel.swift; sourceTree = "<group>"; };
 		0819E2A52FD80B730070DC86 /* LearnWithClaux.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnWithClaux.swift; sourceTree = "<group>"; };
 		0819E2A72FD80C200070DC86 /* LearnWithClauxModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnWithClauxModel.swift; sourceTree = "<group>"; };
+		088B2AB32FF1878E0001A903 /* PurchaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseManager.swift; sourceTree = "<group>"; };
+		088B2AB62FF188390001A903 /* PremiumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumView.swift; sourceTree = "<group>"; };
 		089AA04E2FE818BB00FC022B /* LegalLetterWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegalLetterWriter.swift; sourceTree = "<group>"; };
 		089AA0532FE820DE00FC022B /* NDAGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NDAGenerator.swift; sourceTree = "<group>"; };
 		089AA0552FE820F500FC022B /* SmartToolsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartToolsModels.swift; sourceTree = "<group>"; };
@@ -91,6 +98,8 @@
 		089AA0712FE84E8000FC022B /* learn_courses.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = learn_courses.json; sourceTree = "<group>"; };
 		089AA0712FEB1B7100FC022B /* ClaudeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClaudeAPI.swift; sourceTree = "<group>"; };
 		089AA0742FEB2C0000FC022B /* ClauxAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClauxAPIService.swift; sourceTree = "<group>"; };
+		089AA0762FEB3A0000FC022B /* ClauxAI.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ClauxAI.entitlements; sourceTree = "<group>"; };
+		089AA0772FEB400000FC022B /* OpenAIAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIAPI.swift; sourceTree = "<group>"; };
 		08FAEF9C2FBB04030066F0EE /* SidebarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarView.swift; sourceTree = "<group>"; };
 		08FAEF9E2FBB040F0066F0EE /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		08FAEFA02FBB041A0066F0EE /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
@@ -122,6 +131,7 @@
 		08FAEFE12FCC532A0066F0EE /* ResponseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseVC.swift; sourceTree = "<group>"; };
 		08FAEFE32FCC54000066F0EE /* AppScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppScreen.swift; sourceTree = "<group>"; };
 		08FAEFE62FCC5D480066F0EE /* BugFixerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BugFixerView.swift; sourceTree = "<group>"; };
+		08FAEFEC2FCC60100066F0EE /* DualModeResponseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DualModeResponseView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -219,8 +229,25 @@
 		08130B2B2FB4EBE700B9F7A2 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				088B2AB32FF1878E0001A903 /* PurchaseManager.swift */,
 			);
 			path = Managers;
+			sourceTree = "<group>";
+		};
+		0817A0282FF6A43E00A6922A /* ResultView */ = {
+			isa = PBXGroup;
+			children = (
+				0817A0292FF6A45200A6922A /* ResultView.swift */,
+			);
+			path = ResultView;
+			sourceTree = "<group>";
+		};
+		088B2AB52FF188180001A903 /* PremiumView */ = {
+			isa = PBXGroup;
+			children = (
+				088B2AB62FF188390001A903 /* PremiumView.swift */,
+			);
+			path = PremiumView;
 			sourceTree = "<group>";
 		};
 		089AA04D2FE8189E00FC022B /* LegalLetterWriter */ = {
@@ -301,6 +328,8 @@
 		08FAEF942FBB03AE0066F0EE /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				0817A0282FF6A43E00A6922A /* ResultView */,
+				088B2AB52FF188180001A903 /* PremiumView */,
 				089AA0502FE81FC200FC022B /* SmartToolsScreens */,
 				089AA04D2FE8189E00FC022B /* LegalLetterWriter */,
 				08FAEFDF2FCC53030066F0EE /* ResponseVC */,
@@ -389,6 +418,7 @@
 				089AA0742FEB2C0000FC022B /* ClauxAPIService.swift */,
 				08FAEFA82FBB0CF40066F0EE /* Constants.swift */,
 				089AA0712FEB1B7100FC022B /* ClaudeAPI.swift */,
+				089AA0772FEB400000FC022B /* OpenAIAPI.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -482,6 +512,7 @@
 			isa = PBXGroup;
 			children = (
 				08FAEFE12FCC532A0066F0EE /* ResponseVC.swift */,
+				08FAEFEC2FCC60100066F0EE /* DualModeResponseView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -596,6 +627,7 @@
 				089AA05A2FE8226B00FC022B /* ContractReviewer.swift in Sources */,
 				08FAEFD32FBB20950066F0EE /* Model.swift in Sources */,
 				08130B232FB4EB9900B9F7A2 /* ClauxAIApp.swift in Sources */,
+				0817A02A2FF6A45200A6922A /* ResultView.swift in Sources */,
 				089AA05F2FE8267E00FC022B /* NoteTakerView.swift in Sources */,
 				0819E2A42FD8097B0070DC86 /* SmartToolsView.swift in Sources */,
 				089AA0582FE8221300FC022B /* PolicyMaker.swift in Sources */,
@@ -603,7 +635,9 @@
 				089AA0702FE84CED00FC022B /* LearnWithClauxDetailView.swift in Sources */,
 				089AA0662FE82B7500FC022B /* GrammarChecker.swift in Sources */,
 				0819E2A62FD80A100070DC86 /* SmartToolsModel.swift in Sources */,
+				088B2AB42FF1878E0001A903 /* PurchaseManager.swift in Sources */,
 				089AA0722FEB1B7100FC022B /* ClaudeAPI.swift in Sources */,
+				089AA0782FEB400000FC022B /* OpenAIAPI.swift in Sources */,
 				089AA0732FEB2C0000FC022B /* ClauxAPIService.swift in Sources */,
 				089AA04F2FE818BB00FC022B /* LegalLetterWriter.swift in Sources */,
 				089AA06A2FE82C2600FC022B /* ProposalWriter.swift in Sources */,
@@ -623,11 +657,13 @@
 				08FAEF9F2FBB040F0066F0EE /* HomeView.swift in Sources */,
 				08FAEFE72FCC5D480066F0EE /* BugFixerView.swift in Sources */,
 				089AA0612FE826A000FC022B /* ArticleWriter.swift in Sources */,
+				088B2AB72FF188390001A903 /* PremiumView.swift in Sources */,
 				089AA06C2FE82C5300FC022B /* EmailWriter.swift in Sources */,
 				08FAEFA42FBB054A0066F0EE /* Color+Ext.swift in Sources */,
 				0819E2A62FD80B730070DC86 /* LearnWithClaux.swift in Sources */,
 				0819E2A82FD80C200070DC86 /* LearnWithClauxModel.swift in Sources */,
 				08FAEFE22FCC532A0066F0EE /* ResponseVC.swift in Sources */,
+				08FAEFED2FCC60110066F0EE /* DualModeResponseView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -776,7 +812,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ClauxAI;
+				PRODUCT_BUNDLE_IDENTIFIER = com.clauxaichat.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
@@ -810,7 +846,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ClauxAI;
+				PRODUCT_BUNDLE_IDENTIFIER = com.clauxaichat.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;

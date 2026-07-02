@@ -11,6 +11,7 @@ struct SidebarView: View {
 
     @Binding var selectedItem: SidebarDestination
     var onSelect: ((SidebarDestination) -> Void)? = nil
+    var onUpgrade: (() -> Void)? = nil
 
     var body: some View {
 
@@ -24,7 +25,7 @@ struct SidebarView: View {
 
             Spacer()
 
-            UpgradeCard()
+            UpgradeCard(onUpgrade: onUpgrade)
         }
         .frame(width: 240)
         .padding(24)
@@ -72,14 +73,13 @@ extension SidebarView {
                     title: item.title,
                     icon: item.icon,
                     isSelected: selectedItem == item
-                )
-                .onTapGesture {
+                ) {
                     selectedItem = item
                     onSelect?(item)
                 }
-                .contentShape(Rectangle())
             }
         }
+        .frame(maxWidth: .infinity, alignment: .leading)
     }
 }
 
@@ -89,27 +89,34 @@ struct SidebarItem: View {
     let title: String
     let icon: String
     let isSelected: Bool
+    let action: () -> Void
 
     var body: some View {
 
-        HStack(spacing: 14) {
+        Button(action: action) {
+            HStack(spacing: 14) {
 
-            Image( icon)
-                .resizable()
-                .frame(width: 24 ,height: 24)
+                Image(icon)
+                    .resizable()
+                    .frame(width: 24 ,height: 24)
 
-            Text(title)
-                .font(.sfProDisplayMedium(16))
-            Spacer()
+                Text(title)
+                    .font(.sfProDisplayMedium(16))
+
+                Spacer(minLength: 0)
+            }
+            .padding()
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .background(
+                isSelected ? Color.white : Color.clear
+            )
+            .foregroundStyle(
+                isSelected ? .black : .white
+            )
+            .clipShape(RoundedRectangle(cornerRadius: 14))
+            .contentShape(RoundedRectangle(cornerRadius: 14))
         }
-        .padding()
-        .background(
-            isSelected ? Color.white : Color.clear
-        )
-        .foregroundStyle(
-            isSelected ? .black : .white
-        )
-        .clipShape(RoundedRectangle(cornerRadius: 14))
+        .buttonStyle(.plain)
     }
 }
 
@@ -117,6 +124,9 @@ struct SidebarItem: View {
 
 
 struct UpgradeCard: View {
+
+    @State private var purchaseManager = PurchaseManager.shared
+    var onUpgrade: (() -> Void)? = nil
 
     var body: some View {
 
@@ -131,21 +141,25 @@ struct UpgradeCard: View {
             // MARK: - Text
             VStack(alignment: .leading, spacing: 8) {
 
-                Text("Free Plan")
+                Text(purchaseManager.hasActiveSubscription ? "PRO Plan" : "Free Plan")
                     .font(.sfProDisplaySemiBold(20))
                     .foregroundStyle(Color.textWhite)
 
-                Text("Get full access now.")
+                Text(
+                    purchaseManager.hasActiveSubscription
+                        ? "Full access unlocked."
+                        : "Get full access now."
+                )
                     .font(.sfProDisplayRegular(16))
                     .foregroundStyle(Color.textWhite)
             }
 
             // MARK: - Button
             Button {
-
+                onUpgrade?()
             } label: {
 
-                Text("Upgrade to PRO")
+                Text(purchaseManager.hasActiveSubscription ? "Manage Plan" : "Upgrade to PRO")
                     .font(.sfProDisplayMedium(18))
                     .foregroundStyle(Color.textWhite)
                     .frame(maxWidth: .infinity)
@@ -164,7 +178,7 @@ struct UpgradeCard: View {
             }
             .buttonStyle(.plain)
         }
-        .padding(28)
+        .padding()
         .frame(width: 196,height: 184)
         .background(Color.black)
         .overlay(

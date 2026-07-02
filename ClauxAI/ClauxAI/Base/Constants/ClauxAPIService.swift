@@ -214,6 +214,52 @@ final class ClauxAPIService {
         }
     }
 
+    /// Dual mode — stream Claude and GPT responses in parallel.
+    func streamDualChat(
+        message: String,
+        claudeHistory: [ChatTurn] = [],
+        gptHistory: [ChatTurn] = [],
+        attachments: [ChatAttachment] = [],
+        options: ChatOptions = .default,
+        onClaudeToken: @escaping (String) -> Void,
+        onGPTToken: @escaping (String) -> Void
+    ) async throws {
+        let claudeRequest = buildMessageRequest(
+            feature: .chat,
+            userPrompt: message,
+            history: claudeHistory,
+            attachments: attachments,
+            options: options
+        )
+
+        let gptMessages = buildOpenAIMessages(
+            userPrompt: message,
+            history: gptHistory,
+            attachments: attachments
+        )
+
+        try await withThrowingTaskGroup(of: Void.self) { group in
+            group.addTask {
+                try await self.client.streamMessage(claudeRequest) { event in
+                    if event.type == "content_block_delta", let text = event.delta?.text {
+                        onClaudeToken(text)
+                    }
+                }
+            }
+
+            group.addTask {
+                try await OpenAIAPIClient.shared.streamChat(
+                    messages: gptMessages,
+                    temperature: options.temperature,
+                    maxTokens: options.maxTokens,
+                    onToken: onGPTToken
+                )
+            }
+
+            try await group.waitForAll()
+        }
+    }
+
     // MARK: - Bug Fixer
 
     func fixBug(_ input: BugFixerInput) async throws -> String {
@@ -491,9 +537,6 @@ final class ClauxAPIService {
         options: ChatOptions
     ) -> MessageRequest {
         var systemParts = [ClauxToolPrompts.systemPrompt(for: feature)]
-        if options.dualModeEnabled {
-            systemParts.append(ClauxToolPrompts.dualModeInstruction)
-        }
         if options.webSearchEnabled {
             systemParts.append(ClauxToolPrompts.webSearchInstruction)
         }
@@ -528,6 +571,36 @@ final class ClauxAPIService {
             temperature: options.temperature,
             tools: tools
         )
+    }
+
+    private func buildOpenAIMessages(
+        userPrompt: String,
+        history: [ChatTurn],
+        attachments: [ChatAttachment]
+    ) -> [OpenAIChatMessage] {
+        var messages: [OpenAIChatMessage] = [
+            OpenAIChatMessage(
+                role: "system",
+                content: .text(ClauxToolPrompts.systemPrompt(for: .chat))
+            )
+        ]
+
+        for turn in history {
+            switch turn.role {
+            case .user:
+                messages.append(.user(turn.content))
+            case .assistant:
+                messages.append(.assistant(turn.content))
+            }
+        }
+
+        if attachments.isEmpty {
+            messages.append(.user(userPrompt))
+        } else {
+            messages.append(.user(text: userPrompt, attachments: attachments))
+        }
+
+        return messages
     }
 
     private func formattedPrompt(

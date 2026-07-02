@@ -27,6 +27,7 @@ enum SmartToolGeneration {
         isLoading: Binding<Bool>,
         output: Binding<String>,
         errorMessage: Binding<String?>,
+        showResult: Binding<Bool>? = nil,
         task: @escaping () async throws -> String
     ) {
         isLoading.wrappedValue = true
@@ -36,10 +37,27 @@ enum SmartToolGeneration {
         Task {
             do {
                 output.wrappedValue = try await task()
+                if !output.wrappedValue.isEmpty {
+                    showResult?.wrappedValue = true
+                }
             } catch {
                 errorMessage.wrappedValue = error.localizedDescription
             }
             isLoading.wrappedValue = false
+        }
+    }
+}
+
+// MARK: - Result sheet
+
+extension View {
+    func smartToolResultSheet(
+        isPresented: Binding<Bool>,
+        resultText: String,
+        downloadFileName: String
+    ) -> some View {
+        sheet(isPresented: isPresented) {
+            ResultView(resultText: resultText, downloadFileName: downloadFileName)
         }
     }
 }

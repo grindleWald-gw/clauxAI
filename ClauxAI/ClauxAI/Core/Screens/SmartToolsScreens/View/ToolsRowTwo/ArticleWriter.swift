@@ -26,6 +26,7 @@ struct ArticleWriter: View {
     @State private var outputText = ""
     @State private var isLoading = false
     @State private var errorMessage: String?
+    @State private var showResult = false
 
     var body: some View {
         VStack(spacing: 0) {
@@ -55,9 +56,6 @@ struct ArticleWriter: View {
                     if let errorMessage {
                         SmartToolErrorBanner(message: errorMessage)
                     }
-                    if !outputText.isEmpty {
-                        SmartToolOutputSection(text: outputText)
-                    }
                 }
                 .padding(.horizontal, 32)
                 .padding(.top, 24)
@@ -69,6 +67,11 @@ struct ArticleWriter: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.appMainbg)
+        .smartToolResultSheet(
+            isPresented: $showResult,
+            resultText: outputText,
+            downloadFileName: "article"
+        )
     }
 
     private func generate() {
@@ -77,7 +80,8 @@ struct ArticleWriter: View {
         SmartToolGeneration.run(
             isLoading: $isLoading,
             output: $outputText,
-            errorMessage: $errorMessage
+            errorMessage: $errorMessage,
+            showResult: $showResult
         ) {
             try await ClauxAPIService.shared.generateArticle(
                 ArticleWriterInput(

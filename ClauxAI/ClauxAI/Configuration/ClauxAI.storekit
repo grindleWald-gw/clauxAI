@@ -1,0 +1,176 @@
+{
+  "identifier" : "ClauxAI",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+    {
+      "displayPrice" : "99.99",
+      "familyShareable" : false,
+      "internalID" : "lifetime",
+      "localizations" : [
+        {
+          "description" : "Lifetime access to Claux AI PRO.",
+          "displayName" : "PRO Lifetime",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.clauxaichat.subscription.lifetimeplan",
+      "referenceName" : "PRO Lifetime",
+      "type" : "NonConsumable"
+    }
+  ],
+  "settings" : {
+    "_failTransactionsEnabled" : false,
+    "_storeKitErrors" : [
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Load Products"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Purchase"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Verification"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "App Store Sync"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Subscription Status"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "App Transaction"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Manage Subscriptions Sheet"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Refund Request Sheet"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Offer Code Redeem Sheet"
+      }
+    ]
+  },
+  "subscriptionGroups" : [
+    {
+      "id" : "ClauxPro",
+      "localizations" : [
+
+      ],
+      "name" : "Claux PRO",
+      "subscriptions" : [
+        {
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "5.99",
+          "familyShareable" : false,
+          "groupNumber" : 1,
+          "internalID" : "weekly",
+          "introductoryOffer" : null,
+          "localizations" : [
+            {
+              "description" : "Full access to Claux AI, billed weekly.",
+              "displayName" : "PRO Weekly",
+              "locale" : "en_US"
+            }
+          ],
+          "productID" : "com.clauxaichat.subscription.weekly",
+          "recurringSubscriptionPeriod" : "P1W",
+          "referenceName" : "PRO Weekly",
+          "subscriptionGroupID" : "ClauxPro",
+          "type" : "RecurringSubscription",
+          "winbackOffers" : [
+
+          ]
+        },
+        {
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "18.99",
+          "familyShareable" : false,
+          "groupNumber" : 1,
+          "internalID" : "monthly",
+          "introductoryOffer" : {
+            "internalID" : "monthly-trial",
+            "paymentMode" : "free",
+            "subscriptionPeriod" : "P3D"
+          },
+          "localizations" : [
+            {
+              "description" : "Full access to Claux AI, billed monthly.",
+              "displayName" : "PRO Monthly",
+              "locale" : "en_US"
+            }
+          ],
+          "productID" : "com.clauxaichat.subscription.monthly",
+          "recurringSubscriptionPeriod" : "P1M",
+          "referenceName" : "PRO Monthly",
+          "subscriptionGroupID" : "ClauxPro",
+          "type" : "RecurringSubscription",
+          "winbackOffers" : [
+
+          ]
+        },
+        {
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "39.99",
+          "familyShareable" : false,
+          "groupNumber" : 1,
+          "internalID" : "yearly",
+          "introductoryOffer" : null,
+          "localizations" : [
+            {
+              "description" : "Full access to Claux AI, billed annually.",
+              "displayName" : "PRO Yearly",
+              "locale" : "en_US"
+            }
+          ],
+          "productID" : "com.clauxaichat.subscription.yearly",
+          "recurringSubscriptionPeriod" : "P1Y",
+          "referenceName" : "PRO Yearly",
+          "subscriptionGroupID" : "ClauxPro",
+          "type" : "RecurringSubscription",
+          "winbackOffers" : [
+
+          ]
+        }
+      ]
+    }
+  ],
+  "version" : {
+    "major" : 4,
+    "minor" : 0
+  }
+}

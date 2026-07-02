@@ -37,8 +37,8 @@ struct PromptView: View {
     @State private var isFilePickerPresented = false
 
     private enum Layout {
+        static let totalHeight: CGFloat = 150
         static let thumbnailSize: CGFloat = 56
-        static let inputMinHeight: CGFloat = 90
     }
 
     var body: some View {
@@ -46,6 +46,7 @@ struct PromptView: View {
             textInputSection
             toolbarSection
         }
+        .frame(height: Layout.totalHeight)
         .background(Color.appSecondarybg)
         .clipShape(RoundedRectangle(cornerRadius: 20))
         .overlay(
@@ -68,7 +69,7 @@ private extension PromptView {
         ZStack(alignment: .topLeading) {
             VStack(alignment: .leading, spacing: 10) {
                 ChatInputView(text: $query, onSend: submitQuery)
-                    .frame(maxWidth: .infinity, minHeight: Layout.inputMinHeight, maxHeight: Layout.inputMinHeight)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
 
                 if !attachments.isEmpty {
                     attachmentStrip
@@ -87,8 +88,8 @@ private extension PromptView {
             }
         }
         .padding(.horizontal, 18)
-        .padding(.vertical, 16)
-        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(.vertical, 10)
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
         .background(Color(hex: "#2B2B2B"))
     }
 
@@ -157,7 +158,7 @@ private extension PromptView {
             submitButton
         }
         .padding(.horizontal, 14)
-        .padding(.vertical, 12)
+        .padding(.vertical, 10)
         .background(Color.appSecondarybg)
     }
 
@@ -349,5 +350,5 @@ private struct PromptAttachment: Identifiable {
         )
         .padding(32)
     }
-    .frame(width: 900, height: 280)
+    .frame(width: 900, height: 200)
 }

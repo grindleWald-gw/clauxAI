@@ -37,14 +37,10 @@ struct SmartToolsView: View {
         HStack(alignment: .center) {
             HStack(spacing: 0) {
                 Text("Claux AI")
-                    .foregroundStyle(Color(hex: "#2F80FF"))
-                    .underline()
-
                 Text(" / Smart Tools")
-                    .foregroundStyle(Color.textWhite)
             }
             .font(.sfProDisplaySemiBold(20))
-
+            .foregroundStyle(Color.textWhite)
             Spacer()
 
             Button {} label: {

@@ -10,11 +10,21 @@ import SwiftUI
 
 struct ResponseVC: View {
 
+    private enum EntryKind {
+        case user
+        case assistant
+        case dualAssistant
+    }
+
     private struct ChatEntry: Identifiable {
         let id = UUID()
-        let role: Message.Role
-        var text: String
-        var isStreaming: Bool = false
+        let kind: EntryKind
+        var text: String = ""
+        var claudeText: String = ""
+        var gptText: String = ""
+        var isStreaming = false
+        var claudeStreaming = false
+        var gptStreaming = false
     }
 
     @State private var promptQuery = ""
@@ -38,19 +48,8 @@ struct ResponseVC: View {
                 ScrollView {
                     VStack(alignment: .leading, spacing: 28) {
                         ForEach(entries) { entry in
-                            switch entry.role {
-                            case .user:
-                                UserMessageBubble(text: entry.text)
-                                    .id(entry.id)
-                            case .assistant:
-                                AssistantMessageBubble(
-                                    text: entry.text,
-                                    isStreaming: entry.isStreaming,
-                                    onCopy: { copyToClipboard(entry.text) },
-                                    onShare: { shareText(entry.text) }
-                                )
+                            entryView(for: entry)
                                 .id(entry.id)
-                            }
                         }
 
                         if let errorMessage {
@@ -68,6 +67,12 @@ struct ResponseVC: View {
                 .onChange(of: entries.last?.text) { _, _ in
                     scrollToBottom(proxy)
                 }
+                .onChange(of: entries.last?.claudeText) { _, _ in
+                    scrollToBottom(proxy)
+                }
+                .onChange(of: entries.last?.gptText) { _, _ in
+                    scrollToBottom(proxy)
+                }
             }
 
             PromptView(
@@ -76,13 +81,41 @@ struct ResponseVC: View {
                 isLoading: isLoading,
                 onSubmit: sendFollowUp
             )
-                .padding(.horizontal, 32)
-                .padding(.bottom, 28)
+            .padding(.horizontal, 32)
+            .padding(.bottom, 28)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.appMainbg)
         .task {
             await sendInitialMessage()
+        }
+    }
+
+    @ViewBuilder
+    private func entryView(for entry: ChatEntry) -> some View {
+        switch entry.kind {
+        case .user:
+            UserMessageBubble(text: entry.text)
+
+        case .assistant:
+            AssistantMessageBubble(
+                text: entry.text,
+                isStreaming: entry.isStreaming,
+                onCopy: { copyToClipboard(entry.text) },
+                onShare: { shareText(entry.text) }
+            )
+
+        case .dualAssistant:
+            DualModeResponseRow(
+                claudeText: entry.claudeText,
+                gptText: entry.gptText,
+                claudeStreaming: entry.claudeStreaming,
+                gptStreaming: entry.gptStreaming,
+                onCopyClaude: { copyToClipboard(entry.claudeText) },
+                onShareClaude: { shareText(entry.claudeText) },
+                onCopyGPT: { copyToClipboard(entry.gptText) },
+                onShareGPT: { shareText(entry.gptText) }
+            )
         }
     }
 
@@ -106,14 +139,23 @@ struct ResponseVC: View {
         isLoading = true
 
         let displayMessage = trimmed.isEmpty ? "Sent \(submission.attachments.count) image(s)" : trimmed
-        entries.append(ChatEntry(role: .user, text: displayMessage))
-        let assistantIndex = entries.count
-        entries.append(ChatEntry(role: .assistant, text: "", isStreaming: true))
+        entries.append(ChatEntry(kind: .user, text: displayMessage))
 
-        let history = entries
-            .dropLast(2)
-            .filter { !$0.isStreaming && !$0.text.isEmpty }
-            .map { ChatTurn(role: $0.role, content: $0.text) }
+        if submission.options.dualModeEnabled {
+            await streamDualResponse(submission)
+        } else {
+            await streamSingleResponse(submission)
+        }
+
+        isLoading = false
+    }
+
+    @MainActor
+    private func streamSingleResponse(_ submission: PromptSubmission) async {
+        let assistantIndex = entries.count
+        entries.append(ChatEntry(kind: .assistant, isStreaming: true))
+
+        let history = singleAssistantHistory()
 
         do {
             try await ClauxAPIService.shared.streamChat(
@@ -140,8 +182,103 @@ struct ResponseVC: View {
                 entries.remove(at: assistantIndex)
             }
         }
+    }
 
-        isLoading = false
+    @MainActor
+    private func streamDualResponse(_ submission: PromptSubmission) async {
+        let assistantIndex = entries.count
+        entries.append(
+            ChatEntry(
+                kind: .dualAssistant,
+                claudeStreaming: true,
+                gptStreaming: true
+            )
+        )
+
+        let claudeHistory = dualHistory(for: .claude)
+        let gptHistory = dualHistory(for: .gpt)
+
+        do {
+            try await ClauxAPIService.shared.streamDualChat(
+                message: submission.message,
+                claudeHistory: claudeHistory,
+                gptHistory: gptHistory,
+                attachments: submission.attachments,
+                options: submission.options,
+                onClaudeToken: { token in
+                    Task { @MainActor in
+                        guard assistantIndex < entries.count else { return }
+                        entries[assistantIndex].claudeText += token
+                    }
+                },
+                onGPTToken: { token in
+                    Task { @MainActor in
+                        guard assistantIndex < entries.count else { return }
+                        entries[assistantIndex].gptText += token
+                    }
+                }
+            )
+
+            if assistantIndex < entries.count {
+                entries[assistantIndex].claudeStreaming = false
+                entries[assistantIndex].gptStreaming = false
+
+                if entries[assistantIndex].claudeText.isEmpty {
+                    entries[assistantIndex].claudeText = "No response received."
+                }
+                if entries[assistantIndex].gptText.isEmpty {
+                    entries[assistantIndex].gptText = "No response received."
+                }
+            }
+        } catch {
+            errorMessage = error.localizedDescription
+            if assistantIndex < entries.count {
+                entries.remove(at: assistantIndex)
+            }
+        }
+    }
+
+    private func singleAssistantHistory() -> [ChatTurn] {
+        entries
+            .dropLast(2)
+            .filter { !$0.isStreaming && !$0.claudeStreaming && !$0.gptStreaming }
+            .flatMap { entry -> [ChatTurn] in
+                switch entry.kind {
+                case .user:
+                    return [ChatTurn(role: .user, content: entry.text)]
+                case .assistant where !entry.text.isEmpty:
+                    return [ChatTurn(role: .assistant, content: entry.text)]
+                case .dualAssistant:
+                    return []
+                default:
+                    return []
+                }
+            }
+    }
+
+    private enum DualHistoryProvider {
+        case claude
+        case gpt
+    }
+
+    private func dualHistory(for provider: DualHistoryProvider) -> [ChatTurn] {
+        entries
+            .dropLast(2)
+            .filter { !$0.isStreaming && !$0.claudeStreaming && !$0.gptStreaming }
+            .flatMap { entry -> [ChatTurn] in
+                switch entry.kind {
+                case .user:
+                    return [ChatTurn(role: .user, content: entry.text)]
+                case .assistant where !entry.text.isEmpty:
+                    return [ChatTurn(role: .assistant, content: entry.text)]
+                case .dualAssistant:
+                    let text = provider == .claude ? entry.claudeText : entry.gptText
+                    guard !text.isEmpty else { return [] }
+                    return [ChatTurn(role: .assistant, content: text)]
+                default:
+                    return []
+                }
+            }
     }
 
     private func scrollToBottom(_ proxy: ScrollViewProxy) {
@@ -288,7 +425,13 @@ private struct MessageActionButton: View {
 #Preview {
     ResponseVC(submission: PromptSubmission(
         message: "What do you know about programming?",
-        options: .default
+        options: ChatOptions(
+            model: .sonnet,
+            dualModeEnabled: true,
+            webSearchEnabled: false,
+            temperature: APIConfiguration.defaultTemperature,
+            maxTokens: APIConfiguration.chatMaxTokens
+        )
     ))
-    .frame(width: 900, height: 820)
+    .frame(width: 1100, height: 820)
 }

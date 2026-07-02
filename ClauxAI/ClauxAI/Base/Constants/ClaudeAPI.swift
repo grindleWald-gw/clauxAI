@@ -22,7 +22,9 @@ public final class ClaudeAPIClient {
     private let apiVersion = "2023-06-01"
 
     /// Load from Keychain, environment variable, or a backend proxy in production.
-    public var apiKey: String = ProcessInfo.processInfo.environment["ANTHROPIC_API_KEY"] ?? ""
+    public var apiKey: String = "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"
+    
+    public var gptApiKey : String = "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"
 
     private lazy var session: URLSession = {
         let config = URLSessionConfiguration.default

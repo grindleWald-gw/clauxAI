@@ -11,12 +11,14 @@ struct RootView: View {
 
     @State private var sidebarSelection: SidebarDestination = .home
     @State private var screen: AppScreen = .home
+    @State private var showPremium = false
 
     var body: some View {
         HStack(alignment: .top, spacing: 0) {
             SidebarView(
                 selectedItem: $sidebarSelection,
-                onSelect: handleSidebarSelection
+                onSelect: handleSidebarSelection,
+                onUpgrade: { showPremium = true }
             )
 
             Divider()
@@ -26,6 +28,9 @@ struct RootView: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
         .background(Color.appMainbg)
+        .sheet(isPresented: $showPremium) {
+            PremiumView()
+        }
     }
 
     @ViewBuilder

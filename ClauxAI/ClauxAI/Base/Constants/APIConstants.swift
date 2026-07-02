@@ -19,9 +19,18 @@ enum APIConfiguration {
         set { ClaudeAPIClient.shared.apiKey = newValue }
     }
 
+    static var openAIAPIKey: String {
+        get { OpenAIAPIClient.shared.apiKey }
+        set { OpenAIAPIClient.shared.apiKey = newValue }
+    }
+
     static func bootstrap() {
         if apiKey.isEmpty, !localDevAPIKey.isEmpty {
             apiKey = localDevAPIKey
+        }
+
+        if openAIAPIKey.isEmpty, !ClaudeAPIClient.shared.gptApiKey.isEmpty {
+            openAIAPIKey = ClaudeAPIClient.shared.gptApiKey
         }
     }
 

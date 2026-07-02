@@ -35,6 +35,7 @@ struct StartupAdvisor: View {
     @State private var outputText = ""
     @State private var isLoading = false
     @State private var errorMessage: String?
+    @State private var showResult = false
 
     var body: some View {
         VStack(spacing: 0) {
@@ -64,9 +65,6 @@ struct StartupAdvisor: View {
                     if let errorMessage {
                         SmartToolErrorBanner(message: errorMessage)
                     }
-                    if !outputText.isEmpty {
-                        SmartToolOutputSection(text: outputText)
-                    }
                 }
                 .padding(.horizontal, 32)
                 .padding(.top, 24)
@@ -78,6 +76,11 @@ struct StartupAdvisor: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.appMainbg)
+        .smartToolResultSheet(
+            isPresented: $showResult,
+            resultText: outputText,
+            downloadFileName: "startup-advice"
+        )
     }
 
     private func generate() {
@@ -86,7 +89,8 @@ struct StartupAdvisor: View {
         SmartToolGeneration.run(
             isLoading: $isLoading,
             output: $outputText,
-            errorMessage: $errorMessage
+            errorMessage: $errorMessage,
+            showResult: $showResult
         ) {
             try await ClauxAPIService.shared.adviseStartup(
                 StartupAdvisorInput(
