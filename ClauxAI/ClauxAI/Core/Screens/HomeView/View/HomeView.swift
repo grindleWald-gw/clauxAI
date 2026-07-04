@@ -13,13 +13,7 @@ struct HomeView: View {
     var onSettings: () -> Void = {}
 
     @State private var promptQuery = ""
-    @State private var chatOptions = ChatOptions(
-        model: .opus,
-        dualModeEnabled: false,
-        webSearchEnabled: false,
-        temperature: APIConfiguration.defaultTemperature,
-        maxTokens: APIConfiguration.chatMaxTokens
-    )
+    @State private var chatOptions = ChatOptions.default
 
     private let suggestions: [HomeSuggestion] = [
         HomeSuggestion(
@@ -69,13 +63,7 @@ struct HomeView: View {
 
     private func startNewChat() {
         promptQuery = ""
-        chatOptions = ChatOptions(
-            model: .opus,
-            dualModeEnabled: false,
-            webSearchEnabled: false,
-            temperature: APIConfiguration.defaultTemperature,
-            maxTokens: APIConfiguration.chatMaxTokens
-        )
+        chatOptions = ChatOptions.default
     }
 }
 

@@ -11,7 +11,14 @@ import AppKit
 struct ChatInputView: NSViewRepresentable {
 
     @Binding var text: String
+    var lineCount: Binding<Int>?
     var onSend: () -> Void
+
+    init(text: Binding<String>, lineCount: Binding<Int>? = nil, onSend: @escaping () -> Void) {
+        _text = text
+        self.lineCount = lineCount
+        self.onSend = onSend
+    }
 
     func makeNSView(context: Context) -> NSScrollView {
         let textView = CustomTextView()
@@ -33,6 +40,10 @@ struct ChatInputView: NSViewRepresentable {
         textView.string = text
         ChatInputStyle.apply(to: textView)
 
+        DispatchQueue.main.async {
+            context.coordinator.reportLineCount()
+        }
+
         return scrollView
     }
 
@@ -52,6 +63,7 @@ struct ChatInputView: NSViewRepresentable {
         }
 
         context.coordinator.syncedText = text
+        context.coordinator.reportLineCount()
     }
 
     private func configure(_ textView: NSTextView) {
@@ -95,6 +107,39 @@ struct ChatInputView: NSViewRepresentable {
                 frame.size.width = width
                 textView.frame = frame
             }
+
+            reportLineCount()
+        }
+
+        func reportLineCount() {
+            guard let textView else { return }
+
+            let count = Self.lineCount(in: textView)
+            if let lineCount = parent.lineCount, lineCount.wrappedValue != count {
+                lineCount.wrappedValue = count
+            }
+        }
+
+        static func lineCount(in textView: NSTextView) -> Int {
+            guard let layoutManager = textView.layoutManager,
+                  let textContainer = textView.textContainer else {
+                return 1
+            }
+
+            layoutManager.ensureLayout(for: textContainer)
+
+            var count = 0
+            var glyphIndex = 0
+            let numberOfGlyphs = layoutManager.numberOfGlyphs
+
+            while glyphIndex < numberOfGlyphs {
+                var lineRange = NSRange()
+                layoutManager.lineFragmentRect(forGlyphAt: glyphIndex, effectiveRange: &lineRange)
+                count += 1
+                glyphIndex = NSMaxRange(lineRange)
+            }
+
+            return max(1, count)
         }
 
         func textDidChange(_ notification: Notification) {
@@ -108,6 +153,8 @@ struct ChatInputView: NSViewRepresentable {
             if parent.text != newText {
                 parent.text = newText
             }
+
+            reportLineCount()
         }
     }
 }

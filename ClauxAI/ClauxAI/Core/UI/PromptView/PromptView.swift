@@ -35,10 +35,24 @@ struct PromptView: View {
     @State private var isModelMenuOpen = false
     @State private var attachments: [PromptAttachment] = []
     @State private var isFilePickerPresented = false
+    @State private var textLineCount = 1
 
     private enum Layout {
-        static let totalHeight: CGFloat = 150
-        static let thumbnailSize: CGFloat = 56
+        static let baseHeight: CGFloat = 150
+        static let lineHeight: CGFloat = 22
+        static let maxExtraLines = 3
+        static let attachmentStripExtra: CGFloat = 42
+        static let thumbnailSize: CGFloat = 32
+    }
+
+    private var promptHeight: CGFloat {
+        if showsPlaceholder {
+            return Layout.baseHeight
+        }
+
+        let extraLines = min(max(0, textLineCount - 1), Layout.maxExtraLines)
+        let attachmentExtra = attachments.isEmpty ? 0 : Layout.attachmentStripExtra
+        return Layout.baseHeight + CGFloat(extraLines) * Layout.lineHeight + attachmentExtra
     }
 
     var body: some View {
@@ -46,7 +60,8 @@ struct PromptView: View {
             textInputSection
             toolbarSection
         }
-        .frame(height: Layout.totalHeight)
+        .frame(height: promptHeight)
+        .animation(.easeOut(duration: 0.15), value: promptHeight)
         .background(Color.appSecondarybg)
         .clipShape(RoundedRectangle(cornerRadius: 20))
         .overlay(
@@ -58,6 +73,11 @@ struct PromptView: View {
             allowedContentTypes: [.image],
             allowsMultipleSelection: true
         ) { handleFileSelection($0) }
+        .onChange(of: query) { _, newValue in
+            if newValue.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+                textLineCount = 1
+            }
+        }
     }
 }
 
@@ -72,7 +92,7 @@ private extension PromptView {
     var textInputSection: some View {
         ZStack(alignment: .topLeading) {
             VStack(alignment: .leading, spacing: 10) {
-                ChatInputView(text: $query, onSend: submitQuery)
+                ChatInputView(text: $query, lineCount: $textLineCount, onSend: submitQuery)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
 
                 if !attachments.isEmpty {
@@ -195,7 +215,7 @@ private extension PromptView {
         .background(alignment: .top) {
             if isModelMenuOpen {
                 modelPickerMenu
-                    .offset(y: -modelPickerMenuHeight - 8)
+                    .offset(y: -modelPickerMenuHeight )
             }
         }
     }
@@ -211,8 +231,8 @@ private extension PromptView {
                         .font(.sfProDisplayMedium(14))
                         .foregroundStyle(Color.textWhite)
                         .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding(.horizontal, 16)
-                        .padding(.vertical, 12)
+                        .padding(.horizontal, 14)
+                        .padding(.vertical, 8)
                 }
                 .buttonStyle(.plain)
             }
@@ -228,7 +248,7 @@ private extension PromptView {
     }
 
     private var modelPickerMenuHeight: CGFloat {
-        CGFloat(PromptModel.allCases.count) * 44
+        CGFloat(PromptModel.allCases.count) * 34
     }
 
     var submitButton: some View {
@@ -314,6 +334,7 @@ private extension PromptView {
 
         query = ""
         attachments = []
+        textLineCount = 1
     }
 
     func handleFileSelection(_ result: Result<[URL], Error>) {

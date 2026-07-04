@@ -248,13 +248,13 @@ private struct PremiumPaymentCard: View {
                         .font(.sfProDisplayRegular(12))
                         .foregroundStyle(PremiumColors.mutedText)
                         .strikethrough(true, color: PremiumColors.red)
-                        .padding(.top, 18)
+                        .padding(.top, 15)
                 } else if plan == .lifetime,
                           let secondaryLine = purchaseManager.secondaryPriceLine(for: plan) {
                     Text(secondaryLine)
                         .font(.sfProDisplayRegular(12))
                         .foregroundStyle(PremiumColors.mutedText)
-                        .padding(.top, 18)
+                        .padding(.top, 15)
                 }
 
                 Spacer(minLength: 0)
