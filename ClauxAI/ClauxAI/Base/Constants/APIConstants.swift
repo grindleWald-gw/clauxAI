@@ -10,10 +10,7 @@ import Foundation
 // MARK: - App API configuration
 
 enum APIConfiguration {
-    /// Paste your Anthropic key here for local dev, or set `ANTHROPIC_API_KEY` in the Xcode scheme.
-    private static let localDevAPIKey = ""
-
-    /// Load from Keychain or a backend proxy in production.
+    /// Load from Firebase via DatabaseManager, or set `ANTHROPIC_API_KEY` in the Xcode scheme.
     static var apiKey: String {
         get { ClaudeAPIClient.shared.apiKey }
         set { ClaudeAPIClient.shared.apiKey = newValue }
@@ -25,12 +22,16 @@ enum APIConfiguration {
     }
 
     static func bootstrap() {
-        if apiKey.isEmpty, !localDevAPIKey.isEmpty {
-            apiKey = localDevAPIKey
+        if apiKey.isEmpty, !DatabaseManager.shared.anthropicKey.isEmpty {
+            apiKey = DatabaseManager.shared.anthropicKey
         }
 
-        if openAIAPIKey.isEmpty, !ClaudeAPIClient.shared.gptApiKey.isEmpty {
-            openAIAPIKey = ClaudeAPIClient.shared.gptApiKey
+        if openAIAPIKey.isEmpty {
+            if !ClaudeAPIClient.shared.gptApiKey.isEmpty {
+                openAIAPIKey = ClaudeAPIClient.shared.gptApiKey
+            } else if !DatabaseManager.shared.geminiKey.isEmpty {
+                openAIAPIKey = DatabaseManager.shared.geminiKey
+            }
         }
     }
 

@@ -21,15 +21,17 @@ public final class ClaudeAPIClient {
     private let baseURL = "https://api.anthropic.com"
     private let apiVersion = "2023-06-01"
 
-    /// Load from Keychain, environment variable, or a backend proxy in production.
-    public var apiKey: String = "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"
-    
-    public var gptApiKey : String = "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"
+    /// Loaded from Firebase via DatabaseManager, or overridden by env / APIConfiguration.
+    public var apiKey: String = ""
+
+    /// Loaded from Firebase (`geminiKey`) via DatabaseManager for dual-mode GPT requests.
+    public var gptApiKey: String = ""
 
     private lazy var session: URLSession = {
         let config = URLSessionConfiguration.default
-        config.timeoutIntervalForRequest = 60
-        config.timeoutIntervalForResource = 300
+        // Non-streaming smart-tool responses can take minutes (long docs, up to 8192 tokens).
+        config.timeoutIntervalForRequest = 300
+        config.timeoutIntervalForResource = 600
         return URLSession(configuration: config)
     }()
 
@@ -43,6 +45,9 @@ public final class ClaudeAPIClient {
         body: Encodable? = nil,
         extraHeaders: [String: String] = [:]
     ) throws -> URLRequest {
+        guard !apiKey.isEmpty else {
+            throw ClaudeError.missingAPIKey
+        }
         guard let url = URL(string: baseURL + path) else {
             throw ClaudeError.invalidURL
         }
@@ -508,6 +513,7 @@ public struct APIError: Decodable {
 
 public enum ClaudeError: Error, LocalizedError {
     case invalidURL
+    case missingAPIKey
     case unexpectedStatusCode
     case apiError(APIError)
     case decodingError(Error)
@@ -515,6 +521,7 @@ public enum ClaudeError: Error, LocalizedError {
     public var errorDescription: String? {
         switch self {
         case .invalidURL:              return "Invalid API URL."
+        case .missingAPIKey:           return "Anthropic API key is not loaded yet. Check your connection and try again."
         case .unexpectedStatusCode:    return "Unexpected HTTP status code."
         case .apiError(let e):         return "API error (\(e.type)): \(e.message)"
         case .decodingError(let e):    return "Decoding error: \(e.localizedDescription)"

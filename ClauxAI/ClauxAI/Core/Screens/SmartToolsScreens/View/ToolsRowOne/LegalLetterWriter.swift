@@ -33,8 +33,7 @@ struct LegalLetterWriter: View {
 
     var body: some View {
         VStack(spacing: 0) {
-            header
-                .frame(height: 66)
+            SmartToolScreenHeader(title: "Legal Letter Writer", onBack: onBack)
 
             ScrollView {
                 VStack(alignment: .leading, spacing: 20) {
@@ -70,38 +69,6 @@ struct LegalLetterWriter: View {
             resultText: outputText,
             downloadFileName: "legal-letter"
         )
-    }
-}
-
-// MARK: - Header
-
-private extension LegalLetterWriter {
-
-    var header: some View {
-        HStack(spacing: 14) {
-            Button(action: onBack) {
-                Image(systemName: "chevron.left")
-                    .font(.system(size: 16, weight: .semibold))
-                    .foregroundStyle(Color.textWhite)
-                    .frame(width: 38, height: 38)
-                    .background(Color(hex: "#1C1C1C"))
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 10)
-                            .stroke(Color.appStroke, lineWidth: 1)
-                    )
-                    .clipShape(RoundedRectangle(cornerRadius: 10))
-            }
-            .buttonStyle(.plain)
-
-            Text("Legal Letter Writer")
-                .font(.sfProDisplaySemiBold(20))
-                .foregroundStyle(Color.textWhite)
-
-            Spacer()
-        }
-        .padding(.horizontal, 32)
-        .padding(.vertical, 12)
-        .background(Color.appSecondarybg)
     }
 }
 
@@ -194,15 +161,15 @@ private extension LegalLetterWriter {
                 if isLoading {
                     ProgressView()
                         .controlSize(.small)
-                        .tint(Color(hex: "#D4D4D4"))
+                        .tint(Color.textWhite)
                 }
                 Text(isLoading ? "Generating…" : "Generate now")
                     .font(.sfProDisplaySemiBold(18))
-                    .foregroundStyle(Color(hex: "#D4D4D4"))
+                    .foregroundStyle(Color.textWhite)
             }
             .padding(.horizontal, 48)
             .padding(.vertical, 14)
-            .background(Color(hex: "#8F6B4F"))
+            .background(Color.appOrange)
             .clipShape(Capsule())
         }
         .buttonStyle(.plain)

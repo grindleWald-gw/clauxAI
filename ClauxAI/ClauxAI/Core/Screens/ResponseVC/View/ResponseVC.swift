@@ -34,15 +34,28 @@ struct ResponseVC: View {
     @State private var errorMessage: String?
 
     private let initialSubmission: PromptSubmission
+    private let onSettings: () -> Void
+    private let onNewChat: () -> Void
 
-    init(submission: PromptSubmission) {
+    init(
+        submission: PromptSubmission,
+        onSettings: @escaping () -> Void = {},
+        onNewChat: @escaping () -> Void = {}
+    ) {
         initialSubmission = submission
+        self.onSettings = onSettings
+        self.onNewChat = onNewChat
         _chatOptions = State(initialValue: submission.options)
     }
 
     var body: some View {
         VStack(spacing: 0) {
-            AppHeaderView(text: "Claux AI / Response", action: {})
+            AppHeaderView(
+                text: "Claux AI / Response",
+                showsNewChatButton: true,
+                onNewChat: onNewChat,
+                onSettings: onSettings
+            )
 
             ScrollViewReader { proxy in
                 ScrollView {
@@ -121,12 +134,17 @@ struct ResponseVC: View {
 
     private func sendInitialMessage() async {
         guard entries.isEmpty else { return }
+        guard AIConsentManager.hasAgreed else { return }
         await streamMessage(initialSubmission)
     }
 
     private func sendFollowUp(_ submission: PromptSubmission) {
-        chatOptions = submission.options
-        Task { await streamMessage(submission) }
+        AIConsentPresenter.shared.runAfterConsentIfNeeded {
+            guard CreditManager.shared.requireAccess(to: .chat) else { return }
+            CreditManager.shared.recordChatPrompt()
+            chatOptions = submission.options
+            Task { await streamMessage(submission) }
+        }
     }
 
     @MainActor

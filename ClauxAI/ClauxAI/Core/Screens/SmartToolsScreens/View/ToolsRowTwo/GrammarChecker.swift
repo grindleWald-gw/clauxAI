@@ -31,7 +31,6 @@ struct GrammarChecker: View {
     var body: some View {
         VStack(spacing: 0) {
             SmartToolScreenHeader(title: "Grammar Checker", onBack: onBack)
-                .frame(height: 66)
 
             ScrollView {
                 VStack(alignment: .leading, spacing: 20) {

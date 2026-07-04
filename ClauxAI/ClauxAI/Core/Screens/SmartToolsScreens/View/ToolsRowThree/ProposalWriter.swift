@@ -33,7 +33,6 @@ struct ProposalWriter: View {
     var body: some View {
         VStack(spacing: 0) {
             SmartToolScreenHeader(title: "Proposal Writer", onBack: onBack)
-                .frame(height: 66)
 
             ScrollView {
                 VStack(alignment: .leading, spacing: 20) {

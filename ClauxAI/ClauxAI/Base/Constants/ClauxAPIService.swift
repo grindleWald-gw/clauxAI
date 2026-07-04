@@ -167,6 +167,8 @@ final class ClauxAPIService {
 
     static let shared = ClauxAPIService()
 
+    private static let smartToolModel = PromptModel.sonnet
+
     private let client = ClaudeAPIClient.shared
 
     private init() {}
@@ -353,7 +355,7 @@ final class ClauxAPIService {
         )
     }
 
-    func summarizeText(_ input: TextSummarizerInput, model: PromptModel = .haiku) async throws -> String {
+    func summarizeText(_ input: TextSummarizerInput, model: PromptModel = .sonnet) async throws -> String {
         try await generateSmartTool(
             feature: .textSummarizer,
             model: model,
@@ -365,7 +367,7 @@ final class ClauxAPIService {
         )
     }
 
-    func checkGrammar(_ input: GrammarCheckerInput, model: PromptModel = .haiku) async throws -> String {
+    func checkGrammar(_ input: GrammarCheckerInput, model: PromptModel = .sonnet) async throws -> String {
         try await generateSmartTool(
             feature: .grammarChecker,
             model: model,
@@ -500,7 +502,7 @@ final class ClauxAPIService {
             BatchRequestItem(
                 customId: item.customId,
                 params: MessageRequest(
-                    model: model.claudeModelID,
+                    model: Self.smartToolModel.claudeModelID,
                     maxTokens: APIConfiguration.toolMaxTokens,
                     messages: [Message(role: .user, content: item.userPrompt)],
                     system: ClauxToolPrompts.systemPrompt(for: item.feature),
@@ -518,8 +520,10 @@ final class ClauxAPIService {
         model: PromptModel,
         userPrompt: String
     ) async throws -> String {
+        await DatabaseManager.shared.ensureAPIKeysLoaded()
+
         let request = MessageRequest(
-            model: model.claudeModelID,
+            model: Self.smartToolModel.claudeModelID,
             maxTokens: APIConfiguration.toolMaxTokens,
             messages: [Message(role: .user, content: userPrompt)],
             system: ClauxToolPrompts.systemPrompt(for: feature),
@@ -633,11 +637,6 @@ enum SmartToolAPIInput {
 
 extension SmartToolDestination {
     var defaultModel: PromptModel {
-        switch self {
-        case .textSummarizer, .grammarChecker:
-            return .haiku
-        default:
-            return .sonnet
-        }
+        .sonnet
     }
 }

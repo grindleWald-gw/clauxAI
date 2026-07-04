@@ -28,7 +28,6 @@ struct LearnWithClauxDetailView: View {
     var body: some View {
         VStack(spacing: 0) {
             header
-                .frame(height: 66)
 
             tabBar
                 .padding(.horizontal, 32)
@@ -68,11 +67,14 @@ private extension LearnWithClauxDetailView {
                 .font(.sfProDisplaySemiBold(20))
                 .foregroundStyle(Color.textWhite)
 
-            Spacer()
+            Spacer(minLength: 0)
         }
         .padding(.horizontal, 32)
-        .padding(.vertical, 12)
-        .background(Color.appSecondarybg)
+        .frame(maxWidth: .infinity, minHeight: 66, maxHeight: 66, alignment: .leading)
+        .background(
+            Color.appSecondarybg
+                .ignoresSafeArea(edges: .top)
+        )
     }
 }
 

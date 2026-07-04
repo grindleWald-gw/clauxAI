@@ -30,20 +30,25 @@ enum SmartToolGeneration {
         showResult: Binding<Bool>? = nil,
         task: @escaping () async throws -> String
     ) {
-        isLoading.wrappedValue = true
-        errorMessage.wrappedValue = nil
-        output.wrappedValue = ""
+        AIConsentPresenter.shared.runAfterConsentIfNeeded {
+            guard CreditManager.shared.requireAccess(to: .smartTool) else { return }
 
-        Task {
-            do {
-                output.wrappedValue = try await task()
-                if !output.wrappedValue.isEmpty {
-                    showResult?.wrappedValue = true
+            isLoading.wrappedValue = true
+            errorMessage.wrappedValue = nil
+            output.wrappedValue = ""
+
+            Task {
+                do {
+                    output.wrappedValue = try await task()
+                    if !output.wrappedValue.isEmpty {
+                        CreditManager.shared.recordSmartToolGeneration()
+                        showResult?.wrappedValue = true
+                    }
+                } catch {
+                    errorMessage.wrappedValue = error.localizedDescription
                 }
-            } catch {
-                errorMessage.wrappedValue = error.localizedDescription
+                isLoading.wrappedValue = false
             }
-            isLoading.wrappedValue = false
         }
     }
 }
@@ -65,6 +70,9 @@ extension View {
 // MARK: - Shared header
 
 struct SmartToolScreenHeader: View {
+
+    static let height: CGFloat = 66
+
     let title: String
     let onBack: () -> Void
 
@@ -88,11 +96,14 @@ struct SmartToolScreenHeader: View {
                 .font(.sfProDisplaySemiBold(20))
                 .foregroundStyle(Color.textWhite)
 
-            Spacer()
+            Spacer(minLength: 0)
         }
         .padding(.horizontal, 32)
-        .padding(.vertical, 12)
-        .background(Color.appSecondarybg)
+        .frame(maxWidth: .infinity, minHeight: Self.height, maxHeight: Self.height, alignment: .leading)
+        .background(
+            Color.appSecondarybg
+                .ignoresSafeArea(edges: .top)
+        )
     }
 }
 
@@ -222,15 +233,15 @@ struct SmartToolGenerateButton: View {
                 if isLoading {
                     ProgressView()
                         .controlSize(.small)
-                        .tint(Color(hex: "#D4D4D4"))
+                        .tint(Color.textWhite)
                 }
                 Text(isLoading ? "Generating…" : "Generate now")
                     .font(.sfProDisplaySemiBold(18))
-                    .foregroundStyle(Color(hex: "#D4D4D4"))
+                    .foregroundStyle(Color.textWhite)
             }
             .padding(.horizontal, 48)
             .padding(.vertical, 14)
-            .background(Color(hex: "#8F6B4F"))
+            .background(Color.appOrange)
             .clipShape(Capsule())
         }
         .buttonStyle(.plain)

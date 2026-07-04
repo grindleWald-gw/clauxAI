@@ -288,18 +288,27 @@ extension PurchaseManager {
     }
 
     func secondaryPriceLine(for plan: ProductsCore) -> String? {
-        guard let product = product(for: plan) else { return nil }
-
-        if plan == .lifetime {
+        switch plan {
+        case .weekly, .monthly, .yearly:
+            return nil
+        case .lifetime:
             return "Pay once, enjoy for life!"
         }
-
-        return periodLabel(for: product)
     }
 
     func footerLabel(for plan: ProductsCore) -> String? {
-        guard plan == .yearly else { return nil }
-        return product(for: plan)?.subscription?.introductoryOffer == nil ? "25% Off" : nil
+        guard let weekly = weeklyProduct else { return nil }
+
+        switch plan {
+        case .monthly:
+            let amount = weekly.price * Self.monthlyMultiplier
+            return "\(amount.formatted(weekly.priceFormatStyle)) / month"
+        case .yearly:
+            let amount = weekly.price * Self.yearlyMultiplier
+            return "\(amount.formatted(weekly.priceFormatStyle)) / year"
+        default:
+            return nil
+        }
     }
 
     func hasFreeTrial(for product: Product?) -> Bool {
@@ -315,16 +324,27 @@ extension PurchaseManager {
         if let intro = product.subscription?.introductoryOffer,
            intro.paymentMode == .freeTrial {
             let trialDuration = formattedPeriod(intro.period)
-            let billingSuffix = periodLabel(for: product) ?? ""
-            return "Try Free for \(trialDuration), then \(product.displayPrice)\(billingSuffix)"
+            let billingPrice = product.displayPrice
+            let billingSuffix = billingPeriodLabel(for: plan)
+            return "Try Free for \(trialDuration), then \(billingPrice)\(billingSuffix)"
         }
 
         if plan == .lifetime {
             return "One-time purchase for \(product.displayPrice)"
         }
 
-        let billingSuffix = periodLabel(for: product) ?? ""
-        return "Subscribe for \(product.displayPrice)\(billingSuffix)"
+        let billingPrice = product.displayPrice
+        let billingSuffix = billingPeriodLabel(for: plan)
+        return "Subscribe for \(billingPrice)\(billingSuffix)"
+    }
+
+    func billingPeriodLabel(for plan: ProductsCore) -> String {
+        switch plan {
+        case .weekly: return ""
+        case .monthly: return "/ month"
+        case .yearly: return "/ year"
+        case .lifetime: return ""
+        }
     }
 
     func continueButtonTitle(for plan: ProductsCore) -> String {
@@ -335,6 +355,9 @@ extension PurchaseManager {
     func showFreeTrialBadge(for plan: ProductsCore) -> Bool {
         plan == .monthly && hasFreeTrial(for: product(for: plan))
     }
+
+    private static let monthlyMultiplier = Decimal(string: "4.125")!
+    private static let yearlyMultiplier = Decimal(52)
 
     private func formattedPeriod(_ period: Product.SubscriptionPeriod) -> String {
         let value = period.value

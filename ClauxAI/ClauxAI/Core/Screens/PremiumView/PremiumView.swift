@@ -100,7 +100,7 @@ private extension PremiumView {
             } label: {
                 Text("Restore Purchase")
                     .font(.sfProDisplayMedium(12))
-                    .foregroundStyle(Color.tetxGray)
+                    .foregroundStyle(Color.textWhite)
                     .padding(.horizontal, 18)
                     .frame(height: 32)
                     .background(PremiumColors.restoreBackground)
@@ -113,16 +113,16 @@ private extension PremiumView {
 
     var titleSection: some View {
         VStack(spacing: 8) {
-            HStack(spacing: 8) {
+            HStack(alignment: .center, spacing: 8) {
                 Text("Claux Ai")
                     .font(.sfProDisplayBold(36))
                     .foregroundStyle(Color.textWhite)
 
                 Text("PRO")
-                    .font(.sfProDisplayBold(30))
+                    .font(.sfProDisplayHeavy(24))
                     .foregroundStyle(Color.textWhite)
-                    .padding(.horizontal, 8)
-                    .frame(height: 46)
+                    .padding(.horizontal, 10)
+                    .padding(.vertical, 5)
                     .background(PremiumColors.orange)
                     .clipShape(RoundedRectangle(cornerRadius: 9))
             }
@@ -212,12 +212,12 @@ private struct PremiumPaymentCard: View {
         Button(action: onSelect) {
             VStack(spacing: 0) {
                 Text(badgeText)
-                    .font(.sfProDisplayMedium(13))
+                    .font(.sfProDisplayMedium(14))
                     .foregroundStyle(Color.textWhite)
                     .frame(width: 116, height: 36)
                     .background(badgeColor)
                     .clipShape(Capsule())
-                    .padding(.top, 12)
+                    .padding(12)
 
                 Text(plan.title)
                     .font(.sfProDisplayRegular(18))
@@ -246,8 +246,9 @@ private struct PremiumPaymentCard: View {
                 if let footer = purchaseManager.footerLabel(for: plan) {
                     Text(footer)
                         .font(.sfProDisplayRegular(12))
-                        .foregroundStyle(Color.black)
-                        .padding(.top, 8)
+                        .foregroundStyle(PremiumColors.mutedText)
+                        .strikethrough(true, color: PremiumColors.red)
+                        .padding(.top, 18)
                 } else if plan == .lifetime,
                           let secondaryLine = purchaseManager.secondaryPriceLine(for: plan) {
                     Text(secondaryLine)

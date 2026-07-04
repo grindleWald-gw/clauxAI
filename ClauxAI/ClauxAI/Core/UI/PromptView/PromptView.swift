@@ -65,6 +65,10 @@ struct PromptView: View {
 
 private extension PromptView {
 
+    private var showsPlaceholder: Bool {
+        query.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty && attachments.isEmpty
+    }
+
     var textInputSection: some View {
         ZStack(alignment: .topLeading) {
             VStack(alignment: .leading, spacing: 10) {
@@ -78,7 +82,7 @@ private extension PromptView {
             .padding(.horizontal, 4)
             .padding(.vertical, 4)
 
-            if query.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+            if showsPlaceholder {
                 Text("Enter your query here...")
                     .font(.sfProDisplayRegular(16))
                     .foregroundStyle(Color.tetxGray)
@@ -153,7 +157,7 @@ private extension PromptView {
 
             modelSelector
 
-            borderedIconButton(icon: .homeMicIcon) {}
+           // borderedIconButton(icon: .homeMicIcon) {}
 
             submitButton
         }
@@ -250,9 +254,7 @@ private extension PromptView {
         Button(action: action) {
             Image(icon)
                 .resizable()
-                .scaledToFit()
-                .frame(width: 20, height: 20)
-                .frame(width: 40, height: 40)
+                .frame(width: 32, height: 32)
         }
         .buttonStyle(.plain)
         .background(Color(hex: "#1C1C1C"))
@@ -276,10 +278,11 @@ private extension PromptView {
                     .resizable()
                     .scaledToFit()
                     .frame(width: 18, height: 18)
-
+                    .foregroundStyle(isOn.wrappedValue ? Color(hex: "#FFFFFF") : Color(hex: "#A1A1A1"))
+                                     
                 Text(title)
                     .font(.sfProDisplayMedium(14))
-                    .foregroundStyle(Color.textWhite)
+                    .foregroundStyle(isOn.wrappedValue ? Color(hex: "#FFFFFF") : Color(hex: "#A1A1A1"))
             }
             .padding(.horizontal, 14)
             .frame(height: 40)
@@ -287,7 +290,7 @@ private extension PromptView {
             .overlay(
                 RoundedRectangle(cornerRadius: 12)
                     .stroke(
-                        isOn.wrappedValue ? Color.appOrange.opacity(0.6) : Color.appStroke,
+                        isOn.wrappedValue ? Color.white : Color.appStroke,
                         lineWidth: 1
                     )
             )

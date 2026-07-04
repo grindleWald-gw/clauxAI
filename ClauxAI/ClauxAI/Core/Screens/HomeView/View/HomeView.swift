@@ -10,6 +10,7 @@ import SwiftUI
 struct HomeView: View {
 
     var onSubmit: (PromptSubmission) -> Void = { _ in }
+    var onSettings: () -> Void = {}
 
     @State private var promptQuery = ""
     @State private var chatOptions = ChatOptions(
@@ -41,7 +42,12 @@ struct HomeView: View {
 
     var body: some View {
         VStack(spacing: 0) {
-            AppHeaderView(text: "Claux AI / Home", action: {})
+            AppHeaderView(
+                text: "Claux AI / Home",
+                showsNewChatButton: true,
+                onNewChat: startNewChat,
+                onSettings: onSettings
+            )
 
             Spacer(minLength: 0)
 
@@ -59,6 +65,17 @@ struct HomeView: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.appMainbg)
+    }
+
+    private func startNewChat() {
+        promptQuery = ""
+        chatOptions = ChatOptions(
+            model: .opus,
+            dualModeEnabled: false,
+            webSearchEnabled: false,
+            temperature: APIConfiguration.defaultTemperature,
+            maxTokens: APIConfiguration.chatMaxTokens
+        )
     }
 }
 

@@ -9,9 +9,11 @@ import SwiftUI
 
 struct RootView: View {
 
+    @Bindable private var consentPresenter = AIConsentPresenter.shared
     @State private var sidebarSelection: SidebarDestination = .home
     @State private var screen: AppScreen = .home
     @State private var showPremium = false
+    @State private var showSettings = false
 
     var body: some View {
         HStack(alignment: .top, spacing: 0) {
@@ -28,8 +30,24 @@ struct RootView: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
         .background(Color.appMainbg)
+        .onAppear {
+            CreditManager.shared.onRequirePro = { showPremium = true }
+        }
         .sheet(isPresented: $showPremium) {
             PremiumView()
+        }
+        .sheet(isPresented: $showSettings) {
+            SettingsView {
+                showSettings = false
+                showPremium = true
+            }
+        }
+        .sheet(item: $consentPresenter.activeRequest) { _ in
+            AIConsentView(
+                onAgree: { consentPresenter.agreeAndContinue() },
+                onClose: { consentPresenter.cancelPresentation() }
+            )
+            .interactiveDismissDisabled(true)
         }
     }
 
@@ -37,15 +55,23 @@ struct RootView: View {
     private var detailContent: some View {
         switch screen {
         case .home:
-            HomeView { submission in
-                screen = .response(submission)
-            }
+            HomeView(
+                onSubmit: { submission in
+                    consentPresenter.runAfterConsentIfNeeded {
+                        guard CreditManager.shared.requireAccess(to: .chat) else { return }
+                        CreditManager.shared.recordChatPrompt()
+                        screen = .response(submission)
+                    }
+                },
+                onSettings: { showSettings = true }
+            )
 
         case .bugFixer:
-            BugFixerView()
+            BugFixerView(onSettings: { showSettings = true })
 
         case .smartTools:
-            SmartToolsView { destination in
+            SmartToolsView(
+                onToolSelect: { destination in
                 switch destination {
                 case .legalLetterWriter:
                     screen = .legalLetterWriter
@@ -72,7 +98,9 @@ struct RootView: View {
                 case .grammarChecker:
                     screen = .grammarChecker
                 }
-            }
+            },
+            onSettings: { showSettings = true }
+            )
 
         case .legalLetterWriter:
             LegalLetterWriter {
@@ -135,10 +163,17 @@ struct RootView: View {
             }
 
         case .learnWithClaux:
-            LearnWithClaux()
+            LearnWithClaux(onSettings: { showSettings = true })
 
         case .response(let submission):
-            ResponseVC(submission: submission)
+            ResponseVC(
+                submission: submission,
+                onSettings: { showSettings = true },
+                onNewChat: {
+                    sidebarSelection = .home
+                    screen = .home
+                }
+            )
         }
     }
 

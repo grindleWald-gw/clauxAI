@@ -26,9 +26,12 @@ struct SidebarView: View {
             Spacer()
 
             UpgradeCard(onUpgrade: onUpgrade)
+                .frame(maxWidth: .infinity)
+                .frame(height: 184)
         }
         .frame(width: 240)
-        .padding(24)
+        .padding(.horizontal, 16)
+        .padding(.vertical, 24)
         .background(Color.appSecondarybg)
     }
 
@@ -48,7 +51,7 @@ extension SidebarView {
                     .font(.sfProDisplayBold(20))
                     .foregroundStyle(Color.textWhite)
                 
-                Text("Creative Writing studio.")
+                Text("AI Developers Workspace")
                     .font(.sfProDisplayRegular(14))
                     .foregroundStyle(Color.tetxGray)
             }
@@ -136,7 +139,6 @@ struct UpgradeCard: View {
             Image(.coinIcon)
                 .resizable()
                 .frame(width: 47, height: 47)
-            
 
             // MARK: - Text
             VStack(alignment: .leading, spacing: 8) {
@@ -178,8 +180,8 @@ struct UpgradeCard: View {
             }
             .buttonStyle(.plain)
         }
-        .padding()
-        .frame(width: 196,height: 184)
+        .padding(14)
+        .frame(maxWidth: .infinity, minHeight: 184, maxHeight: 184, alignment: .topLeading)
         .background(Color.black)
         .overlay(
             RoundedRectangle(cornerRadius: 34)

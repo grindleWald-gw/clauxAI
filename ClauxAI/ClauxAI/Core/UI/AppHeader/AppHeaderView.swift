@@ -9,24 +9,28 @@ import SwiftUI
 
 struct AppHeaderView: View {
     let text: String
-    let action : () -> Void
-    
+    var showsNewChatButton: Bool = false
+    var onNewChat: (() -> Void)? = nil
+    let onSettings: () -> Void
+
     var body: some View {
-        HStack(alignment: .center){
+        HStack(alignment: .center, spacing: 12) {
             Text(text)
                 .foregroundStyle(Color.textWhite)
                 .font(.sfProDisplaySemiBold(20))
-            Spacer()
-            
-            Button {
-                action()
-            } label: {
+
+            Spacer(minLength: 12)
+
+            if showsNewChatButton, let onNewChat {
+                NewChatHeaderButton(action: onNewChat)
+            }
+
+            Button(action: onSettings) {
                 Image(.settingIcon)
                     .resizable()
                     .frame(width: 38, height: 38)
             }
             .buttonStyle(.plain)
-
         }
         .frame(height: 50)
         .frame(maxWidth: .infinity, alignment: .center)
@@ -35,6 +39,37 @@ struct AppHeaderView: View {
     }
 }
 
+struct NewChatHeaderButton: View {
+    let action: () -> Void
+
+    var body: some View {
+        Button(action: action) {
+            HStack(spacing: 8) {
+                Image(systemName: "plus")
+                    .font(.system(size: 14, weight: .medium))
+
+                Text("New Chat")
+                    .font(.sfProDisplayMedium(14))
+            }
+            .foregroundStyle(Color.textWhite)
+            .padding(.horizontal, 16)
+            .frame(height: 38)
+            .background(Color.black)
+            .overlay(
+                Capsule()
+                    .stroke(Color.textWhite, lineWidth: 1)
+            )
+            .clipShape(Capsule())
+        }
+        .buttonStyle(.plain)
+    }
+}
+
 #Preview {
-    AppHeaderView(text: "Claux AI", action: {})
+    AppHeaderView(
+        text: "Claux AI / Home",
+        showsNewChatButton: true,
+        onNewChat: {},
+        onSettings: {}
+    )
 }

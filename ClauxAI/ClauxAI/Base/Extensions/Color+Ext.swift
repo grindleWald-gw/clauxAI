@@ -17,7 +17,7 @@ extension Color {
     static let appBlack  = Color(hex: "#000000")
     static let textBlack = Color(hex: "#000000")
     
-    static let appOrange = Color(hex: "#E37D2F")
+    static let appOrange = Color(hex: "#E37D2F") 
     static let tetxGray = Color(hex: "#A1A1A1")
     
     static let appStroke = Color(hex: "#3D3D3D")

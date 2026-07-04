@@ -23,6 +23,7 @@ struct ResultView: View {
 
     @Environment(\.dismiss) private var dismiss
     @State private var didCopy = false
+    @State private var isExporting = false
 
     var body: some View {
         ZStack {
@@ -44,7 +45,13 @@ struct ResultView: View {
             }
         }
         .clipShape(RoundedRectangle(cornerRadius: 24))
-        .frame(width: 900, height: 680)
+        .frame(width: 800, height: 680)
+        .fileExporter(
+            isPresented: $isExporting,
+            document: PlainTextDocument(text: resultText),
+            contentType: .plainText,
+            defaultFilename: downloadFileName
+        ) { _ in }
     }
 }
 
@@ -129,7 +136,9 @@ private extension ResultView {
             }
             .buttonStyle(.plain)
 
-            Button(action: downloadText) {
+            Button {
+                isExporting = true
+            } label: {
                 Text("Download")
                     .font(.sfProDisplaySemiBold(18))
                     .foregroundStyle(Color.textWhite)
@@ -151,15 +160,30 @@ private extension ResultView {
             didCopy = false
         }
     }
+}
 
-    func downloadText() {
-        let panel = NSSavePanel()
-        panel.allowedContentTypes = [.plainText]
-        panel.nameFieldStringValue = "\(downloadFileName).txt"
-        panel.canCreateDirectories = true
+// MARK: - Export document
 
-        guard panel.runModal() == .OK, let url = panel.url else { return }
-        try? resultText.write(to: url, atomically: true, encoding: .utf8)
+private struct PlainTextDocument: FileDocument {
+    static var readableContentTypes: [UTType] { [.plainText] }
+
+    var text: String
+
+    init(text: String = "") {
+        self.text = text
+    }
+
+    init(configuration: ReadConfiguration) throws {
+        if let data = configuration.file.regularFileContents,
+           let string = String(data: data, encoding: .utf8) {
+            text = string
+        } else {
+            text = ""
+        }
+    }
+
+    func fileWrapper(configuration: WriteConfiguration) throws -> FileWrapper {
+        FileWrapper(regularFileWithContents: Data(text.utf8))
     }
 }
 

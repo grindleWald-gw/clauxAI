@@ -10,6 +10,8 @@ import SwiftUI
 
 struct LearnWithClaux: View {
 
+    var onSettings: () -> Void = {}
+
     @State private var selectedCourse: LearnCourse?
 
     private enum Layout {
@@ -74,7 +76,7 @@ struct LearnWithClaux: View {
             .foregroundStyle(Color.textWhite)
             Spacer()
 
-            Button {} label: {
+            Button(action: onSettings) {
                 Image(.settingIcon)
                     .resizable()
                     .frame(width: 38, height: 38)

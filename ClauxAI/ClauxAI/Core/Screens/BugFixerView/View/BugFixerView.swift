@@ -11,6 +11,10 @@ import UniformTypeIdentifiers
 
 struct BugFixerView: View {
 
+    var onSettings: () -> Void = {}
+
+    @State private var purchaseManager = PurchaseManager.shared
+
     private enum Layout {
         static let inputHeight: CGFloat = 217
         static let outputHeight: CGFloat = 317
@@ -28,9 +32,15 @@ struct BugFixerView: View {
 
     var body: some View {
         VStack(spacing: 0) {
-            AppHeaderView(text: "Claux AI / Bug Fixer", action: {})
+            AppHeaderView(text: "Claux AI / Bug Fixer", onSettings: onSettings)
 
             VStack(spacing: 20) {
+                if !purchaseManager.hasActiveSubscription {
+                    SmartToolErrorBanner(
+                        message: CreditManager.shared.proRequiredMessage(for: .bugFixer)
+                    )
+                }
+
                 inputSection
                     .frame(height: Layout.inputHeight)
 
@@ -106,8 +116,6 @@ private extension BugFixerView {
         } label: {
             Image(.fileUploadIcon)
                 .resizable()
-                .scaledToFit()
-                .frame(width: 20, height: 20)
                 .foregroundStyle(Color.tetxGray)
                 .frame(width: Layout.attachButtonSize, height: Layout.attachButtonSize)
                 .background(Color(hex: "#1C1C1C"))
@@ -205,7 +213,11 @@ private extension BugFixerView {
             .clipShape(Capsule())
         }
         .buttonStyle(.plain)
-        .disabled(isLoading || promptText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
+        .disabled(
+            isLoading
+                || promptText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+                || !CreditManager.shared.canAccess(.bugFixer)
+        )
         .opacity(isLoading ? 0.7 : 1)
         .frame(maxWidth: .infinity)
     }
@@ -214,31 +226,35 @@ private extension BugFixerView {
         let trimmed = promptText.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !trimmed.isEmpty, !isLoading else { return }
 
-        isLoading = true
-        errorMessage = nil
-        responseText = ""
+        AIConsentPresenter.shared.runAfterConsentIfNeeded {
+            guard CreditManager.shared.requireAccess(to: .bugFixer) else { return }
 
-        let imageAttachments = attachments.map { ChatAttachment(image: $0.image) }
+            isLoading = true
+            errorMessage = nil
+            responseText = ""
 
-        Task {
-            do {
-                responseText = try await ClauxAPIService.shared.fixBug(
-                    BugFixerInput(
-                        prompt: trimmed,
-                        attachments: imageAttachments,
-                        options: ChatOptions(
-                            model: .sonnet,
-                            dualModeEnabled: false,
-                            webSearchEnabled: false,
-                            temperature: APIConfiguration.defaultTemperature,
-                            maxTokens: APIConfiguration.bugFixerMaxTokens
+            let imageAttachments = attachments.map { ChatAttachment(image: $0.image) }
+
+            Task {
+                do {
+                    responseText = try await ClauxAPIService.shared.fixBug(
+                        BugFixerInput(
+                            prompt: trimmed,
+                            attachments: imageAttachments,
+                            options: ChatOptions(
+                                model: .sonnet,
+                                dualModeEnabled: false,
+                                webSearchEnabled: false,
+                                temperature: APIConfiguration.defaultTemperature,
+                                maxTokens: APIConfiguration.bugFixerMaxTokens
+                            )
                         )
                     )
-                )
-            } catch {
-                errorMessage = error.localizedDescription
+                } catch {
+                    errorMessage = error.localizedDescription
+                }
+                isLoading = false
             }
-            isLoading = false
         }
     }
 

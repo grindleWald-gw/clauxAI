@@ -11,6 +11,7 @@ import SwiftUI
 struct SmartToolsView: View {
 
     var onToolSelect: (SmartToolDestination) -> Void = { _ in }
+    var onSettings: () -> Void = {}
 
     private let sections = SmartToolsData.sections
 
@@ -43,17 +44,20 @@ struct SmartToolsView: View {
             .foregroundStyle(Color.textWhite)
             Spacer()
 
-            Button {} label: {
+            Button(action: onSettings) {
                 Image(.settingIcon)
                     .resizable()
                     .frame(width: 38, height: 38)
             }
             .buttonStyle(.plain)
         }
-        .frame(height: 50)
         .frame(maxWidth: .infinity)
+        .frame(height: 50)
         .padding(.horizontal)
-        .background(Color.appSecondarybg)
+        .background(
+            Color.appSecondarybg
+                .ignoresSafeArea(edges: .top)
+        )
     }
 }
 
