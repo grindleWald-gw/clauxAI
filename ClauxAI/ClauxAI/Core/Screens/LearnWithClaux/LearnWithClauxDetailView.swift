@@ -8,12 +8,47 @@
 import AppKit
 import SwiftUI
 
+struct SharingAnchorView: NSViewRepresentable {
+    @Binding var anchor: NSView?
+
+    func makeNSView(context: Context) -> NSView {
+        let view = NSView()
+        DispatchQueue.main.async { anchor = view }
+        return view
+    }
+
+    func updateNSView(_ nsView: NSView, context: Context) {
+        DispatchQueue.main.async { anchor = nsView }
+    }
+}
+
+enum SharingPresenter {
+    static func show(
+        items: [Any],
+        relativeTo anchor: NSView?,
+        preferredEdge: NSRectEdge = .maxY
+    ) {
+        let picker = NSSharingServicePicker(items: items)
+
+        if let anchor {
+            picker.show(relativeTo: anchor.bounds, of: anchor, preferredEdge: preferredEdge)
+            return
+        }
+
+        if let contentView = NSApp.keyWindow?.contentView {
+            picker.show(relativeTo: contentView.bounds, of: contentView, preferredEdge: preferredEdge)
+        }
+    }
+}
+
+
 struct LearnWithClauxDetailView: View {
 
     let course: LearnCourse
     var onBack: () -> Void = {}
 
     @State private var selectedTabID: String
+    @State private var shareAnchorView: NSView?
 
     init(course: LearnCourse, onBack: @escaping () -> Void = {}) {
         self.course = course
@@ -132,7 +167,8 @@ private extension LearnWithClauxDetailView {
                 actionButton(title: "Copy", systemImage: "doc.on.doc") {
                     copyContent()
                 }
-                actionButton(title: "Share", systemImage: "square.and.arrow.up") {}
+
+                shareButton
             }
             .padding(20)
         }
@@ -205,6 +241,33 @@ private extension LearnWithClauxDetailView {
         }
     }
 
+    var shareButton: some View {
+        Button(action: shareContent) {
+            HStack(spacing: 8) {
+                Image(systemName: "square.and.arrow.up")
+                    .font(.system(size: 14, weight: .medium))
+                    .foregroundStyle(Color.tetxGray)
+
+                Text("Share")
+                    .font(.sfProDisplayMedium(14))
+                    .foregroundStyle(Color.tetxGray)
+            }
+            .padding(.horizontal, 14)
+            .padding(.vertical, 10)
+            .background(Color(hex: "#1C1C1C"))
+            .overlay(
+                RoundedRectangle(cornerRadius: 12)
+                    .stroke(Color.appStroke, lineWidth: 1)
+            )
+            .clipShape(RoundedRectangle(cornerRadius: 12))
+        }
+        .buttonStyle(.plain)
+        .overlay {
+            SharingAnchorView(anchor: $shareAnchorView)
+                .allowsHitTesting(false)
+        }
+    }
+
     func actionButton(
         title: String,
         systemImage: String,
@@ -233,9 +296,26 @@ private extension LearnWithClauxDetailView {
     }
 
     func copyContent() {
-        guard let tab = selectedTab else { return }
+        guard let text = selectedTabContent() else { return }
 
-        let text = tab.sections
+        NSPasteboard.general.clearContents()
+        NSPasteboard.general.setString(text, forType: .string)
+    }
+
+    func shareContent() {
+        guard let text = selectedTabContent() else { return }
+
+        SharingPresenter.show(
+            items: [text],
+            relativeTo: shareAnchorView,
+            preferredEdge: .maxY
+        )
+    }
+
+    func selectedTabContent() -> String? {
+        guard let tab = selectedTab else { return nil }
+
+        return tab.sections
             .map { section in
                 var parts: [String] = []
                 if let title = section.title { parts.append(title) }
@@ -248,9 +328,6 @@ private extension LearnWithClauxDetailView {
                 return parts.joined(separator: "\n")
             }
             .joined(separator: "\n\n")
-
-        NSPasteboard.general.clearContents()
-        NSPasteboard.general.setString(text, forType: .string)
     }
 }
 

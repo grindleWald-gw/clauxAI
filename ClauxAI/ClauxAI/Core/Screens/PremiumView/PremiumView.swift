@@ -222,7 +222,7 @@ private struct PremiumPaymentCard: View {
                 Text(plan.title)
                     .font(.sfProDisplayRegular(18))
                     .foregroundStyle(Color.textWhite)
-                    .padding(.top, 20)
+                    .padding(.top, 10)
 
                 if isLoading && product == nil {
                     ProgressView()
@@ -248,13 +248,13 @@ private struct PremiumPaymentCard: View {
                         .font(.sfProDisplayRegular(12))
                         .foregroundStyle(PremiumColors.mutedText)
                         .strikethrough(true, color: PremiumColors.red)
-                        .padding(.top, 15)
+                        .padding(.top, 10)
                 } else if plan == .lifetime,
                           let secondaryLine = purchaseManager.secondaryPriceLine(for: plan) {
                     Text(secondaryLine)
                         .font(.sfProDisplayRegular(12))
                         .foregroundStyle(PremiumColors.mutedText)
-                        .padding(.top, 15)
+                        .padding(.top, 10)
                 }
 
                 Spacer(minLength: 0)
