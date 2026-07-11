@@ -47,18 +47,17 @@ struct SplashView: View {
             Color.appMainbg.ignoresSafeArea()
 
             VStack(spacing: 18) {
-                Image(.homeHeroLogo)
+                Image(.iconSplash)
                     .resizable()
-                    .scaledToFit()
-                    .frame(width: 112, height: 112)
+                    .frame(width: 150, height: 150)
 
-                Text("Claux AI")
-                    .font(.sfProDisplayBold(30))
-                    .foregroundStyle(Color.textWhite)
-
-                Text("AI Developers Workspace")
-                    .font(.sfProDisplayRegular(16))
-                    .foregroundStyle(Color.tetxGray)
+//                Text("Claux AI")
+//                    .font(.sfProDisplayBold(30))
+//                    .foregroundStyle(Color.textWhite)
+//
+//                Text("AI Developers Workspace")
+//                    .font(.sfProDisplayRegular(16))
+//                    .foregroundStyle(Color.tetxGray)
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)

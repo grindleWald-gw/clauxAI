@@ -173,16 +173,7 @@ private extension BugFixerView {
                         .foregroundStyle(Color.tetxGray)
                         .frame(maxWidth: .infinity, alignment: .leading)
                 } else {
-                    Group {
-                        if let attributed = try? AttributedString(markdown: responseText) {
-                            Text(attributed)
-                        } else {
-                            Text(responseText)
-                        }
-                    }
-                    .font(.sfProDisplayRegular(16))
-                    .foregroundStyle(Color.textWhite)
-                    .frame(maxWidth: .infinity, alignment: .leading)
+                    MarkdownContentView(text: responseText, fontSize: 16, lineSpacing: 4, textColor: .textWhite)
                 }
             }
             .padding(20)

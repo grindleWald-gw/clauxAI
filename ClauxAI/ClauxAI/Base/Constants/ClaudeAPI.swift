@@ -111,19 +111,23 @@ extension ClaudeAPIClient {
             throw ClaudeError.unexpectedStatusCode
         }
 
-        var buffer = ""
+        var buffer = Data()
         for try await byte in bytes {
-            buffer.append(Character(UnicodeScalar(byte)))
-            while let range = buffer.range(of: "\n") {
-                let line = String(buffer[buffer.startIndex..<range.lowerBound])
-                buffer.removeSubrange(buffer.startIndex...range.lowerBound)
-                if line.hasPrefix("data: ") {
-                    let jsonStr = String(line.dropFirst(6))
-                    if jsonStr == "[DONE]" { return }
-                    if let data = jsonStr.data(using: .utf8),
-                       let event = try? JSONDecoder().decode(StreamEvent.self, from: data) {
-                        onEvent(event)
-                    }
+            buffer.append(byte)
+
+            while let newlineIndex = buffer.firstIndex(of: 0x0A) {
+                let lineData = buffer[..<newlineIndex]
+                buffer.removeSubrange(buffer.startIndex...newlineIndex)
+
+                guard let line = String(data: lineData, encoding: .utf8)?
+                    .trimmingCharacters(in: .init(charactersIn: "\r")),
+                      line.hasPrefix("data: ") else { continue }
+
+                let jsonStr = String(line.dropFirst(6))
+                if jsonStr == "[DONE]" { return }
+                if let data = jsonStr.data(using: .utf8),
+                   let event = try? JSONDecoder().decode(StreamEvent.self, from: data) {
+                    onEvent(event)
                 }
             }
         }
@@ -181,14 +185,19 @@ extension ClaudeAPIClient {
             method: "GET", path: "/v1/messages/batches/\(id)/results")
         let (bytes, _) = try await session.bytes(for: urlRequest)
 
-        var buffer = ""
+        var buffer = Data()
         for try await byte in bytes {
-            buffer.append(Character(UnicodeScalar(byte)))
-            while let range = buffer.range(of: "\n") {
-                let line = String(buffer[buffer.startIndex..<range.lowerBound])
-                buffer.removeSubrange(buffer.startIndex...range.lowerBound)
-                if !line.isEmpty,
-                   let data = line.data(using: .utf8),
+            buffer.append(byte)
+
+            while let newlineIndex = buffer.firstIndex(of: 0x0A) {
+                let lineData = buffer[..<newlineIndex]
+                buffer.removeSubrange(buffer.startIndex...newlineIndex)
+
+                guard let line = String(data: lineData, encoding: .utf8)?
+                    .trimmingCharacters(in: .init(charactersIn: "\r")),
+                      !line.isEmpty else { continue }
+
+                if let data = line.data(using: .utf8),
                    let result = try? JSONDecoder().decode(BatchResult.self, from: data) {
                     onResult(result)
                 }

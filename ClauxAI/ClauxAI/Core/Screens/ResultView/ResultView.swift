@@ -13,7 +13,7 @@ private enum ResultColors {
     static let background = Color(hex: "#121212")
     static let contentBackground = Color(hex: "#1C1C1C")
     static let copyButton = Color(hex: "#2B2B2B")
-    static let downloadButton = Color(hex: "#C98B52")
+    static let downloadButton = Color.appOrange
 }
 
 struct ResultView: View {
@@ -96,26 +96,8 @@ private extension ResultView {
         .clipShape(RoundedRectangle(cornerRadius: 20))
     }
 
-    @ViewBuilder
     var resultTextView: some View {
-        if let attributed = try? AttributedString(
-            markdown: resultText,
-            options: AttributedString.MarkdownParsingOptions(
-                interpretedSyntax: .inlineOnlyPreservingWhitespace
-            )
-        ) {
-            Text(attributed)
-                .font(.sfProDisplayRegular(16))
-                .foregroundStyle(Color.textWhite)
-                .multilineTextAlignment(.leading)
-                .lineSpacing(6)
-        } else {
-            Text(resultText)
-                .font(.sfProDisplayRegular(16))
-                .foregroundStyle(Color.textWhite)
-                .multilineTextAlignment(.leading)
-                .lineSpacing(6)
-        }
+        MarkdownContentView(text: resultText, fontSize: 16, lineSpacing: 6, textColor: .textWhite)
     }
 }
 
@@ -144,7 +126,7 @@ private extension ResultView {
                     .foregroundStyle(Color.textWhite)
                     .frame(maxWidth: .infinity)
                     .frame(height: 54)
-                    .background(ResultColors.downloadButton)
+                    .background(Color.appOrange)
                     .clipShape(Capsule())
             }
             .buttonStyle(.plain)

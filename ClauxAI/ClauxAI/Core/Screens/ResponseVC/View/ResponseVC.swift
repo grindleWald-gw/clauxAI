@@ -377,12 +377,10 @@ private struct AssistantMessageBubble: View {
     }
 
     private var assistantAvatar: some View {
-        Image(.sidebarIcon)
+        Image(.iconResponse)
             .resizable()
-            .scaledToFit()
             .frame(width: 36, height: 36)
             .padding(6)
-            .background(Color.appOrange)
             .clipShape(Circle())
     }
 
@@ -392,18 +390,8 @@ private struct AssistantMessageBubble: View {
             ProgressView()
                 .controlSize(.small)
                 .tint(Color.textWhite)
-        } else if let attributed = try? AttributedString(markdown: text) {
-            Text(attributed)
-                .font(.sfProDisplayRegular(16))
-                .foregroundStyle(Color.textWhite)
-                .multilineTextAlignment(.leading)
-                .lineSpacing(4)
         } else {
-            Text(text)
-                .font(.sfProDisplayRegular(16))
-                .foregroundStyle(Color.textWhite)
-                .multilineTextAlignment(.leading)
-                .lineSpacing(4)
+            MarkdownContentView(text: text, fontSize: 16, lineSpacing: 4, textColor: .textWhite)
         }
     }
 }

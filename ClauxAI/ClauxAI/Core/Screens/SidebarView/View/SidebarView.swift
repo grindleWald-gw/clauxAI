@@ -13,21 +13,25 @@ struct SidebarView: View {
     var onSelect: ((SidebarDestination) -> Void)? = nil
     var onUpgrade: (() -> Void)? = nil
 
+    @State private var purchaseManager = PurchaseManager.shared
+
     var body: some View {
 
         VStack(alignment: .leading) {
 
             AppBrandView
-              
+
 
              navigationMenu
                 .padding(.top, 24)
 
             Spacer()
 
-            UpgradeCard(onUpgrade: onUpgrade)
-                .frame(maxWidth: .infinity)
-                .frame(height: 184)
+            if !purchaseManager.hasActiveSubscription {
+                UpgradeCard(onUpgrade: onUpgrade)
+                    .frame(maxWidth: .infinity)
+                    .frame(height: 184)
+            }
         }
         .frame(width: 240)
         .padding(.horizontal, 16)
@@ -128,7 +132,6 @@ struct SidebarItem: View {
 
 struct UpgradeCard: View {
 
-    @State private var purchaseManager = PurchaseManager.shared
     var onUpgrade: (() -> Void)? = nil
 
     var body: some View {
@@ -143,15 +146,11 @@ struct UpgradeCard: View {
             // MARK: - Text
             VStack(alignment: .leading, spacing: 8) {
 
-                Text(purchaseManager.hasActiveSubscription ? "PRO Plan" : "Free Plan")
+                Text("Free Plan")
                     .font(.sfProDisplaySemiBold(20))
                     .foregroundStyle(Color.textWhite)
 
-                Text(
-                    purchaseManager.hasActiveSubscription
-                        ? "Full access unlocked."
-                        : "Get full access now."
-                )
+                Text("Get full access now.")
                     .font(.sfProDisplayRegular(16))
                     .foregroundStyle(Color.textWhite)
             }
@@ -161,7 +160,7 @@ struct UpgradeCard: View {
                 onUpgrade?()
             } label: {
 
-                Text(purchaseManager.hasActiveSubscription ? "Manage Plan" : "Upgrade to PRO")
+                Text("Upgrade to PRO")
                     .font(.sfProDisplayMedium(18))
                     .foregroundStyle(Color.textWhite)
                     .frame(maxWidth: .infinity)

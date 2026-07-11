@@ -23,14 +23,14 @@
                 "id": "what-is",
                 "kind": "heading",
                 "title": "What is HTML",
-                "text": "HTML is not a programming language, but a markup language that tells browsers how to display content. Each piece of content is wrapped in tags that describe its purpose.",
+                "text": "HTML is not a programming language, but a markup language that tells browsers how to display content. Each piece of content is wrapped in tags that describe its purpose. The current specification is the HTML Living Standard, maintained by WHATWG and updated continuously rather than in numbered versions.",
                 "items": null
               },
               {
                 "id": "purpose",
                 "kind": "heading",
                 "title": "Purpose of HTML",
-                "text": "The primary goal of HTML is to structure content meaningfully so users and search engines understand what each section represents.",
+                "text": "The primary goal of HTML is to structure content meaningfully so users, browsers, assistive technology, and search engines all understand what each section represents.",
                 "items": null
               },
               {
@@ -43,7 +43,24 @@
                   { "term": "Tags", "definition": "Keywords enclosed in angle brackets" },
                   { "term": "Attributes", "definition": "Extra information about elements" },
                   { "term": "Structure", "definition": "Hierarchy of page layout" },
-                  { "term": "Semantic meaning", "definition": "Describes purpose of content" }
+                  { "term": "Semantic meaning", "definition": "Describes purpose of content" },
+                  { "term": "Forms", "definition": "Collect and validate user input" },
+                  { "term": "Accessibility (ARIA)", "definition": "Roles and attributes for assistive tech" }
+                ]
+              },
+              {
+                "id": "modern-features",
+                "kind": "heading",
+                "title": "Modern HTML Features",
+                "text": null,
+                "items": [
+                  { "term": "Semantic HTML5 elements", "definition": "header, main, nav, article, section, and footer describe page regions" },
+                  { "term": "Web Components", "definition": "Custom elements, shadow DOM, and templates for reusable UI" },
+                  { "term": "The dialog element", "definition": "Native, accessible modal and popover dialogs without a library" },
+                  { "term": "Lazy-loaded images", "definition": "The loading attribute defers offscreen images automatically" },
+                  { "term": "Native form validation", "definition": "required, pattern, and typed inputs validate without JavaScript" },
+                  { "term": "The template element", "definition": "Inert, reusable markup fragments cloned at runtime" },
+                  { "term": "Popover API", "definition": "Built-in, accessible popovers and tooltips with the popover attribute" }
                 ]
               },
               {
@@ -57,8 +74,22 @@
                 "id": "head-guidelines",
                 "kind": "heading",
                 "title": "Head Section Guidelines",
-                "text": "The <head> section usually contains title tags, meta descriptions, charset settings, and links to CSS/JS files. Metadata here is essential for browser behavior and SEO optimization.",
+                "text": "The <head> section usually contains title tags, meta descriptions, charset settings, viewport configuration, and links to CSS/JS files. Metadata here is essential for browser behavior, social sharing previews, and SEO optimization.",
                 "items": null
+              },
+              {
+                "id": "best-practices",
+                "kind": "heading",
+                "title": "Best Practices",
+                "text": null,
+                "items": [
+                  { "term": "One h1 per page", "definition": "Keep a single, logical heading hierarchy (h1 to h6)" },
+                  { "term": "Prefer semantic tags", "definition": "Use article, section, and nav over generic div and span" },
+                  { "term": "Always add alt text", "definition": "Describe every meaningful image for screen readers" },
+                  { "term": "Label every form control", "definition": "Pair inputs with label elements or aria-label" },
+                  { "term": "Validate your markup", "definition": "Keep HTML well-formed and standards-compliant" },
+                  { "term": "Optimize Core Web Vitals", "definition": "Use resource hints like preload and defer for faster loads" }
+                ]
               }
             ]
           },
@@ -72,6 +103,20 @@
                 "title": null,
                 "text": "Explore practical HTML examples including semantic layouts, forms, media embedding, and accessible navigation patterns.",
                 "items": null
+              },
+              {
+                "id": "examples-list",
+                "kind": "heading",
+                "title": "Project Ideas",
+                "text": null,
+                "items": [
+                  { "term": "Semantic blog layout", "definition": "Header, article, aside, and footer regions with proper headings" },
+                  { "term": "Accessible signup form", "definition": "Labeled inputs, fieldsets, and inline validation messages" },
+                  { "term": "Responsive image gallery", "definition": "picture and srcset for art direction and resolution switching" },
+                  { "term": "Multi-step wizard", "definition": "A dialog-based flow using the native dialog element" },
+                  { "term": "Custom video player controls", "definition": "Accessible controls built around the video element" },
+                  { "term": "SEO-optimized landing page", "definition": "Structured data, meta tags, and semantic sectioning" }
+                ]
               }
             ]
           },
@@ -85,6 +130,19 @@
                 "title": null,
                 "text": "Build a personal portfolio page, a product landing section, and a contact form using semantic HTML tags.",
                 "items": null
+              },
+              {
+                "id": "assignments-list",
+                "kind": "heading",
+                "title": "Practice Tasks",
+                "text": null,
+                "items": [
+                  { "term": "Personal portfolio page", "definition": "Showcase projects with semantic sections and navigation" },
+                  { "term": "Accessible contact form", "definition": "Full validation, labels, and error messaging" },
+                  { "term": "News article layout", "definition": "Recreate a publication page with semantic tags" },
+                  { "term": "Three-tier pricing table", "definition": "Structured, accessible comparison layout" },
+                  { "term": "FAQ accordion", "definition": "Built with the native details and summary elements" }
+                ]
               }
             ]
           },
@@ -98,6 +156,19 @@
                 "title": null,
                 "text": "HTML skills support roles in frontend development, UI engineering, email template design, and content management.",
                 "items": null
+              },
+              {
+                "id": "career-roles",
+                "kind": "heading",
+                "title": "Career Paths",
+                "text": null,
+                "items": [
+                  { "term": "Frontend Developer", "definition": "Builds structured, accessible user interfaces" },
+                  { "term": "UI Engineer", "definition": "Bridges design systems and semantic markup" },
+                  { "term": "Email Template Developer", "definition": "Builds cross-client compatible HTML emails" },
+                  { "term": "Accessibility Specialist", "definition": "Audits and improves markup for assistive tech" },
+                  { "term": "CMS / Web Producer", "definition": "Publishes and structures content at scale" }
+                ]
               }
             ]
           }
@@ -127,7 +198,14 @@
                 "id": "what-is",
                 "kind": "heading",
                 "title": "What is CSS",
-                "text": "CSS separates presentation from structure, allowing developers to style many pages consistently from a single stylesheet.",
+                "text": "CSS separates presentation from structure, allowing developers to style many pages consistently from a single stylesheet. Modern CSS also handles logic that once required JavaScript, like responsive layout and simple state-based styling.",
+                "items": null
+              },
+              {
+                "id": "purpose",
+                "kind": "heading",
+                "title": "Why CSS Matters",
+                "text": "Well-structured CSS keeps large codebases maintainable, ensures a consistent visual language, and directly impacts performance and accessibility through render efficiency and color contrast.",
                 "items": null
               },
               {
@@ -140,7 +218,38 @@
                   { "term": "Box model", "definition": "Margin, border, padding, and content" },
                   { "term": "Flexbox", "definition": "One-dimensional layout system" },
                   { "term": "Grid", "definition": "Two-dimensional layout system" },
-                  { "term": "Media queries", "definition": "Responsive breakpoints for devices" }
+                  { "term": "Media queries", "definition": "Responsive breakpoints for devices" },
+                  { "term": "Custom properties", "definition": "Reusable CSS variables with cascading scope" },
+                  { "term": "Cascade & specificity", "definition": "Rules that decide which style wins" }
+                ]
+              },
+              {
+                "id": "modern-features",
+                "kind": "heading",
+                "title": "Modern CSS Features",
+                "text": null,
+                "items": [
+                  { "term": "Container queries", "definition": "Style a component based on its container's size, not the viewport" },
+                  { "term": "Native CSS nesting", "definition": "Nest selectors directly without a preprocessor" },
+                  { "term": "The has() selector", "definition": "Style a parent based on its children — a real parent selector" },
+                  { "term": "Cascade layers (@layer)", "definition": "Control specificity conflicts predictably at scale" },
+                  { "term": "color-mix() and wide gamut", "definition": "Blend colors and use display-p3 for richer color" },
+                  { "term": "View Transitions API", "definition": "Smooth, native animations between page/state changes" },
+                  { "term": "light-dark() function", "definition": "One-line color values that adapt to the user's color scheme" }
+                ]
+              },
+              {
+                "id": "best-practices",
+                "kind": "heading",
+                "title": "Best Practices",
+                "text": null,
+                "items": [
+                  { "term": "Design mobile-first", "definition": "Start with small screens, enhance upward with min-width queries" },
+                  { "term": "Use logical properties", "definition": "margin-inline and padding-block adapt to writing direction" },
+                  { "term": "Keep specificity low", "definition": "Favor utility classes or BEM over deep nested selectors" },
+                  { "term": "Use fluid sizing", "definition": "clamp(), min(), and max() reduce breakpoint sprawl" },
+                  { "term": "Avoid !important", "definition": "Fix specificity issues at the source instead" },
+                  { "term": "Audit unused CSS", "definition": "Trim dead styles to keep stylesheets fast and maintainable" }
                 ]
               }
             ]
@@ -149,21 +258,61 @@
             "id": "examples",
             "title": "Examples",
             "sections": [
-              { "id": "examples-intro", "kind": "paragraph", "title": null, "text": "Practice card layouts, responsive navbars, dark themes, and animation transitions.", "items": null }
+              { "id": "examples-intro", "kind": "paragraph", "title": null, "text": "Practice card layouts, responsive navbars, dark themes, and animation transitions.", "items": null },
+              {
+                "id": "examples-list",
+                "kind": "heading",
+                "title": "Project Ideas",
+                "text": null,
+                "items": [
+                  { "term": "Card grid layout", "definition": "Auto-fit product cards built with CSS Grid" },
+                  { "term": "Responsive navbar", "definition": "Flexbox navigation that collapses on small screens" },
+                  { "term": "Dark/light theme toggle", "definition": "Driven entirely by custom properties and light-dark()" },
+                  { "term": "Animated page transitions", "definition": "Built with the View Transitions API" },
+                  { "term": "Container-query product cards", "definition": "Cards that adapt layout based on their own width" },
+                  { "term": "Fluid typography scale", "definition": "A type system built with clamp() instead of fixed breakpoints" }
+                ]
+              }
             ]
           },
           {
             "id": "assignments",
             "title": "Assignments",
             "sections": [
-              { "id": "assignments-intro", "kind": "paragraph", "title": null, "text": "Style a dashboard, recreate a mobile-first landing page, and build a reusable component library.", "items": null }
+              { "id": "assignments-intro", "kind": "paragraph", "title": null, "text": "Style a dashboard, recreate a mobile-first landing page, and build a reusable component library.", "items": null },
+              {
+                "id": "assignments-list",
+                "kind": "heading",
+                "title": "Practice Tasks",
+                "text": null,
+                "items": [
+                  { "term": "Analytics dashboard", "definition": "Grid-based layout with cards, charts, and sidebars" },
+                  { "term": "Mobile-first landing page", "definition": "Fully responsive marketing page" },
+                  { "term": "Reusable component library", "definition": "Buttons, inputs, and cards driven by design tokens" },
+                  { "term": "System-aware dark mode", "definition": "Respect prefers-color-scheme automatically" },
+                  { "term": "Responsive pricing page", "definition": "Combine Grid and container queries for adaptive cards" }
+                ]
+              }
             ]
           },
           {
             "id": "career",
             "title": "Career Growth",
             "sections": [
-              { "id": "career-intro", "kind": "paragraph", "title": null, "text": "CSS expertise is essential for frontend developers, UI designers, and design-system engineers.", "items": null }
+              { "id": "career-intro", "kind": "paragraph", "title": null, "text": "CSS expertise is essential for frontend developers, UI designers, and design-system engineers.", "items": null },
+              {
+                "id": "career-roles",
+                "kind": "heading",
+                "title": "Career Paths",
+                "text": null,
+                "items": [
+                  { "term": "Frontend Developer", "definition": "Implements responsive, accessible interfaces" },
+                  { "term": "UI / Visual Developer", "definition": "Translates design systems into precise CSS" },
+                  { "term": "Design-System Engineer", "definition": "Builds and maintains shared style foundations" },
+                  { "term": "CSS Architect", "definition": "Defines scalable styling conventions for large teams" },
+                  { "term": "Email/Newsletter Developer", "definition": "Builds styling that survives strict email clients" }
+                ]
+              }
             ]
           }
         ]
@@ -189,6 +338,20 @@
                 "items": null
               },
               {
+                "id": "what-is",
+                "kind": "heading",
+                "title": "What is JavaScript",
+                "text": "JavaScript is a dynamic, multi-paradigm language that runs in browsers, on servers via Node.js, and even on embedded devices. It evolves yearly through ECMAScript (ES) specifications, adding new syntax and built-in capabilities.",
+                "items": null
+              },
+              {
+                "id": "purpose",
+                "kind": "heading",
+                "title": "Why JavaScript Matters",
+                "text": "JavaScript is the only language that runs natively in every browser, making it the foundation of interactive web experiences, and, through Node.js, a full backend and tooling ecosystem.",
+                "items": null
+              },
+              {
                 "id": "core-concepts",
                 "kind": "heading",
                 "title": "Core Concepts of JavaScript",
@@ -198,7 +361,38 @@
                   { "term": "Functions", "definition": "Reusable blocks of logic" },
                   { "term": "DOM", "definition": "Interface to update page content" },
                   { "term": "Events", "definition": "Respond to user interactions" },
-                  { "term": "Async", "definition": "Handle timers, promises, and fetch" }
+                  { "term": "Async", "definition": "Handle timers, promises, and fetch" },
+                  { "term": "Modules", "definition": "Import and export code across files" },
+                  { "term": "Closures", "definition": "Functions that remember their defining scope" }
+                ]
+              },
+              {
+                "id": "modern-features",
+                "kind": "heading",
+                "title": "Modern JavaScript Features",
+                "text": null,
+                "items": [
+                  { "term": "Optional chaining & nullish coalescing", "definition": "?. and ?? guard against undefined safely" },
+                  { "term": "Top-level await", "definition": "Use await directly in ES modules, no wrapper needed" },
+                  { "term": "Array.at() and Object.groupBy()", "definition": "Cleaner indexing and native grouping helpers" },
+                  { "term": "structuredClone()", "definition": "Deep-clone values without a library" },
+                  { "term": "Promise.allSettled / Promise.any", "definition": "Robust patterns for parallel async work" },
+                  { "term": "Native ES Modules", "definition": "import/export works natively in browsers and Node" },
+                  { "term": "WeakRef & FinalizationRegistry", "definition": "Fine-grained memory management for advanced cases" }
+                ]
+              },
+              {
+                "id": "best-practices",
+                "kind": "heading",
+                "title": "Best Practices",
+                "text": null,
+                "items": [
+                  { "term": "Prefer const and let", "definition": "Avoid var and its function-scoping pitfalls" },
+                  { "term": "Use strict equality", "definition": "=== avoids implicit type coercion bugs" },
+                  { "term": "Handle promise rejections", "definition": "Always catch or await with try/catch" },
+                  { "term": "Avoid blocking the main thread", "definition": "Offload heavy work to workers or chunk it" },
+                  { "term": "Write pure functions", "definition": "Predictable logic is easier to test and debug" },
+                  { "term": "Lint and format consistently", "definition": "Use ESLint and Prettier across the team" }
                 ]
               }
             ]
@@ -207,21 +401,61 @@
             "id": "examples",
             "title": "Examples",
             "sections": [
-              { "id": "examples-intro", "kind": "paragraph", "title": null, "text": "Build interactive forms, todo lists, fetch-based widgets, and simple browser games.", "items": null }
+              { "id": "examples-intro", "kind": "paragraph", "title": null, "text": "Build interactive forms, todo lists, fetch-based widgets, and simple browser games.", "items": null },
+              {
+                "id": "examples-list",
+                "kind": "heading",
+                "title": "Project Ideas",
+                "text": null,
+                "items": [
+                  { "term": "Interactive form validator", "definition": "Real-time feedback without a page reload" },
+                  { "term": "Todo list with local storage", "definition": "Persist state across browser sessions" },
+                  { "term": "Fetch-based weather widget", "definition": "Async requests with loading and error states" },
+                  { "term": "Debounced search box", "definition": "Delay requests until the user stops typing" },
+                  { "term": "Drag-and-drop kanban board", "definition": "Native drag events and dynamic DOM updates" },
+                  { "term": "Simple browser game", "definition": "Canvas-based game loop with keyboard input" }
+                ]
+              }
             ]
           },
           {
             "id": "assignments",
             "title": "Assignments",
             "sections": [
-              { "id": "assignments-intro", "kind": "paragraph", "title": null, "text": "Create a weather app, a calculator, and a searchable data table with sorting.", "items": null }
+              { "id": "assignments-intro", "kind": "paragraph", "title": null, "text": "Create a weather app, a calculator, and a searchable data table with sorting.", "items": null },
+              {
+                "id": "assignments-list",
+                "kind": "heading",
+                "title": "Practice Tasks",
+                "text": null,
+                "items": [
+                  { "term": "Weather app", "definition": "Fetch and display live weather with error handling" },
+                  { "term": "Calculator", "definition": "Handle operator precedence and keyboard input" },
+                  { "term": "Sortable data table", "definition": "Client-side search, sort, and pagination" },
+                  { "term": "Countdown timer", "definition": "Precise timing with setInterval and cleanup" },
+                  { "term": "Quiz app with scoring", "definition": "Track state across multiple question screens" }
+                ]
+              }
             ]
           },
           {
             "id": "career",
             "title": "Career Growth",
             "sections": [
-              { "id": "career-intro", "kind": "paragraph", "title": null, "text": "JavaScript opens paths into frontend, full-stack, mobile, and automation engineering.", "items": null }
+              { "id": "career-intro", "kind": "paragraph", "title": null, "text": "JavaScript opens paths into frontend, full-stack, mobile, and automation engineering.", "items": null },
+              {
+                "id": "career-roles",
+                "kind": "heading",
+                "title": "Career Paths",
+                "text": null,
+                "items": [
+                  { "term": "Frontend Developer", "definition": "Builds interactive, client-side experiences" },
+                  { "term": "Full-stack Developer", "definition": "Works across the browser and Node.js backend" },
+                  { "term": "Mobile Developer", "definition": "Ships apps with React Native or similar frameworks" },
+                  { "term": "Automation Engineer", "definition": "Scripts browsers and workflows with JS tooling" },
+                  { "term": "Game Developer", "definition": "Builds browser games with canvas or WebGL" }
+                ]
+              }
             ]
           }
         ]
@@ -250,14 +484,14 @@
                 "id": "what-is",
                 "kind": "heading",
                 "title": "What is Python",
-                "text": "Python emphasizes clean syntax and rapid development. Its large ecosystem makes it ideal for beginners and professionals alike.",
+                "text": "Python emphasizes clean syntax and rapid development. Its large ecosystem makes it ideal for beginners and professionals alike, and modern releases continue to improve both performance and typing support.",
                 "items": null
               },
               {
                 "id": "purpose",
                 "kind": "heading",
                 "title": "Purpose of Python",
-                "text": "Python helps teams build prototypes quickly, automate repetitive tasks, and process data at scale.",
+                "text": "Python helps teams build prototypes quickly, automate repetitive tasks, and process data at scale, while remaining readable enough for cross-team collaboration.",
                 "items": null
               },
               {
@@ -270,22 +504,53 @@
                   { "term": "Data types", "definition": "Strings, numbers, lists, dicts, and more" },
                   { "term": "Functions", "definition": "Reusable logic with parameters" },
                   { "term": "Modules", "definition": "Organize and share code packages" },
-                  { "term": "OOP", "definition": "Classes and objects for complex systems" }
+                  { "term": "OOP", "definition": "Classes and objects for complex systems" },
+                  { "term": "Type hints", "definition": "Optional static typing checked by tools like mypy" },
+                  { "term": "Comprehensions", "definition": "Concise syntax for building lists, dicts, and sets" }
+                ]
+              },
+              {
+                "id": "modern-features",
+                "kind": "heading",
+                "title": "Modern Python Features",
+                "text": null,
+                "items": [
+                  { "term": "Structural pattern matching", "definition": "match/case for expressive branching on shape and value" },
+                  { "term": "Generic type syntax (PEP 695)", "definition": "Cleaner generics with the new type statement" },
+                  { "term": "Improved f-strings", "definition": "Nested quotes and multi-line expressions in newer releases" },
+                  { "term": "Faster CPython", "definition": "Ongoing interpreter speedups each release cycle" },
+                  { "term": "asyncio TaskGroup", "definition": "Structured concurrency for managing multiple coroutines" },
+                  { "term": "pathlib", "definition": "Modern, object-oriented filesystem paths" },
+                  { "term": "Dataclasses & Protocol", "definition": "Lightweight data containers and structural typing" }
                 ]
               },
               {
                 "id": "structure-guidelines",
                 "kind": "heading",
                 "title": "Python Project Structure Guidelines",
-                "text": "Organize projects with clear modules, virtual environments, requirements files, and test folders for maintainability.",
+                "text": "Organize projects with clear modules, virtual environments, requirements or pyproject.toml files, and test folders for maintainability.",
                 "items": null
               },
               {
                 "id": "head-guidelines",
                 "kind": "heading",
                 "title": "Environment Setup Guidelines",
-                "text": "Use version managers, isolated environments, and linting tools to keep Python projects consistent across machines.",
+                "text": "Use version managers, isolated virtual environments, and linting/formatting tools like ruff and black to keep Python projects consistent across machines.",
                 "items": null
+              },
+              {
+                "id": "best-practices",
+                "kind": "heading",
+                "title": "Best Practices",
+                "text": null,
+                "items": [
+                  { "term": "Use virtual environments", "definition": "Isolate dependencies per project" },
+                  { "term": "Follow PEP 8", "definition": "Consistent style improves readability" },
+                  { "term": "Add type hints", "definition": "Check them with mypy or pyright" },
+                  { "term": "Prefer f-strings", "definition": "Cleaner than % formatting or .format()" },
+                  { "term": "Use pathlib", "definition": "Safer and more readable than raw os.path" },
+                  { "term": "Write tests with pytest", "definition": "Keep logic verified as the codebase grows" }
+                ]
               }
             ]
           },
@@ -293,21 +558,61 @@
             "id": "examples",
             "title": "Examples",
             "sections": [
-              { "id": "examples-intro", "kind": "paragraph", "title": null, "text": "Work through scripts for file automation, REST APIs, data parsing, and simple machine-learning demos.", "items": null }
+              { "id": "examples-intro", "kind": "paragraph", "title": null, "text": "Work through scripts for file automation, REST APIs, data parsing, and simple machine-learning demos.", "items": null },
+              {
+                "id": "examples-list",
+                "kind": "heading",
+                "title": "Project Ideas",
+                "text": null,
+                "items": [
+                  { "term": "File automation script", "definition": "Batch rename, organize, or back up files" },
+                  { "term": "REST API with FastAPI", "definition": "Typed endpoints with automatic docs" },
+                  { "term": "Data parsing pipeline", "definition": "Clean and transform CSV/JSON with pandas" },
+                  { "term": "Async web scraper", "definition": "Concurrent requests with asyncio and httpx" },
+                  { "term": "CLI tool", "definition": "Argument parsing with argparse or click" },
+                  { "term": "Simple ML demo", "definition": "Train a small classifier with scikit-learn" }
+                ]
+              }
             ]
           },
           {
             "id": "assignments",
             "title": "Assignments",
             "sections": [
-              { "id": "assignments-intro", "kind": "paragraph", "title": null, "text": "Build a CLI tool, a Flask API, and a data analysis notebook with charts.", "items": null }
+              { "id": "assignments-intro", "kind": "paragraph", "title": null, "text": "Build a CLI tool, a Flask API, and a data analysis notebook with charts.", "items": null },
+              {
+                "id": "assignments-list",
+                "kind": "heading",
+                "title": "Practice Tasks",
+                "text": null,
+                "items": [
+                  { "term": "CLI productivity tool", "definition": "Automate a daily task from the terminal" },
+                  { "term": "Flask or FastAPI service", "definition": "A small API with routes and validation" },
+                  { "term": "Data analysis notebook", "definition": "Explore a dataset and chart insights" },
+                  { "term": "Scheduled automation script", "definition": "Runs a repetitive task on a timer" },
+                  { "term": "Simple ML classifier", "definition": "Train and evaluate a scikit-learn model" }
+                ]
+              }
             ]
           },
           {
             "id": "career",
             "title": "Career Growth",
             "sections": [
-              { "id": "career-intro", "kind": "paragraph", "title": null, "text": "Python skills support careers in backend engineering, data science, DevOps, and AI product development.", "items": null }
+              { "id": "career-intro", "kind": "paragraph", "title": null, "text": "Python skills support careers in backend engineering, data science, DevOps, and AI product development.", "items": null },
+              {
+                "id": "career-roles",
+                "kind": "heading",
+                "title": "Career Paths",
+                "text": null,
+                "items": [
+                  { "term": "Backend Engineer", "definition": "Builds APIs and services with Django or FastAPI" },
+                  { "term": "Data Scientist", "definition": "Analyzes data and builds statistical models" },
+                  { "term": "ML / AI Engineer", "definition": "Trains and deploys machine learning systems" },
+                  { "term": "DevOps / SRE Engineer", "definition": "Automates infrastructure and deployments" },
+                  { "term": "Automation Engineer", "definition": "Scripts workflows across tools and systems" }
+                ]
+              }
             ]
           }
         ]
@@ -325,19 +630,133 @@
             "id": "overview",
             "title": "Overview",
             "sections": [
-              { "id": "intro", "kind": "heading", "title": "Introduction:", "text": "React is a JavaScript library for building component-based user interfaces with declarative rendering.", "items": null },
-              { "id": "core-concepts", "kind": "heading", "title": "Core Concepts of React", "text": null, "items": [
-                { "term": "Components", "definition": "Reusable UI building blocks" },
-                { "term": "Props", "definition": "Pass data into components" },
-                { "term": "State", "definition": "Manage changing UI data" },
-                { "term": "Hooks", "definition": "Functional state and lifecycle tools" },
-                { "term": "Virtual DOM", "definition": "Efficient UI updates" }
-              ]}
+              {
+                "id": "intro",
+                "kind": "heading",
+                "title": "Introduction:",
+                "text": "React is a JavaScript library for building component-based user interfaces with declarative rendering.",
+                "items": null
+              },
+              {
+                "id": "what-is",
+                "kind": "heading",
+                "title": "What is React",
+                "text": "React describes UI as a function of state: you declare what the interface should look like for a given state, and React efficiently updates the DOM to match as that state changes.",
+                "items": null
+              },
+              {
+                "id": "purpose",
+                "kind": "heading",
+                "title": "Why React Matters",
+                "text": "React's component model and huge ecosystem make it the most widely used approach for building maintainable, interactive interfaces, from single pages to full frameworks like Next.js.",
+                "items": null
+              },
+              {
+                "id": "core-concepts",
+                "kind": "heading",
+                "title": "Core Concepts of React",
+                "text": null,
+                "items": [
+                  { "term": "Components", "definition": "Reusable UI building blocks" },
+                  { "term": "Props", "definition": "Pass data into components" },
+                  { "term": "State", "definition": "Manage changing UI data" },
+                  { "term": "Hooks", "definition": "Functional state and lifecycle tools" },
+                  { "term": "Virtual DOM", "definition": "Efficient UI updates" },
+                  { "term": "Context", "definition": "Share data without prop drilling" },
+                  { "term": "Suspense", "definition": "Declaratively handle loading states" }
+                ]
+              },
+              {
+                "id": "modern-features",
+                "kind": "heading",
+                "title": "Modern React Features",
+                "text": null,
+                "items": [
+                  { "term": "Actions & useActionState", "definition": "Handle form submissions and pending/error state declaratively" },
+                  { "term": "The use() hook", "definition": "Read promises and context conditionally inside render" },
+                  { "term": "Server Components", "definition": "Render components on the server with zero client JS" },
+                  { "term": "Automatic batching", "definition": "State updates batch everywhere, not just event handlers" },
+                  { "term": "useOptimistic", "definition": "Show optimistic UI while an update is in flight" },
+                  { "term": "React Compiler", "definition": "Automatic memoization without hand-written useMemo/useCallback" }
+                ]
+              },
+              {
+                "id": "best-practices",
+                "kind": "heading",
+                "title": "Best Practices",
+                "text": null,
+                "items": [
+                  { "term": "Keep components focused", "definition": "One clear responsibility per component" },
+                  { "term": "Lift state only when needed", "definition": "Keep state as local as possible" },
+                  { "term": "Use stable keys in lists", "definition": "Avoid array index keys when order can change" },
+                  { "term": "Co-locate state and logic", "definition": "Keep state near the component that owns it" },
+                  { "term": "Memoize selectively", "definition": "Optimize proven bottlenecks, not everything" },
+                  { "term": "Prefer composition", "definition": "Compose components instead of deep prop drilling" }
+                ]
+              }
             ]
           },
-          { "id": "examples", "title": "Examples", "sections": [{ "id": "e1", "kind": "paragraph", "title": null, "text": "Build counters, modals, routed pages, and reusable form components.", "items": null }] },
-          { "id": "assignments", "title": "Assignments", "sections": [{ "id": "a1", "kind": "paragraph", "title": null, "text": "Create a task manager, a product catalog, and a dashboard with charts.", "items": null }] },
-          { "id": "career", "title": "Career Growth", "sections": [{ "id": "c1", "kind": "paragraph", "title": null, "text": "React is widely used in frontend and full-stack roles across startups and enterprise teams.", "items": null }] }
+          {
+            "id": "examples",
+            "title": "Examples",
+            "sections": [
+              { "id": "examples-intro", "kind": "paragraph", "title": null, "text": "Build counters, modals, routed pages, and reusable form components.", "items": null },
+              {
+                "id": "examples-list",
+                "kind": "heading",
+                "title": "Project Ideas",
+                "text": null,
+                "items": [
+                  { "term": "Counter with hooks", "definition": "useState and useEffect fundamentals" },
+                  { "term": "Accessible modal", "definition": "Focus trapping and keyboard handling" },
+                  { "term": "Routed multi-page app", "definition": "Client-side navigation with nested routes" },
+                  { "term": "Infinite-scroll feed", "definition": "Data fetching combined with Suspense boundaries" },
+                  { "term": "Optimistic like button", "definition": "Instant UI feedback with useOptimistic" },
+                  { "term": "Reusable form components", "definition": "Shared inputs, validation, and error display" }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "assignments",
+            "title": "Assignments",
+            "sections": [
+              { "id": "assignments-intro", "kind": "paragraph", "title": null, "text": "Create a task manager, a product catalog, and a dashboard with charts.", "items": null },
+              {
+                "id": "assignments-list",
+                "kind": "heading",
+                "title": "Practice Tasks",
+                "text": null,
+                "items": [
+                  { "term": "Task manager", "definition": "CRUD operations with local or remote persistence" },
+                  { "term": "Product catalog", "definition": "Filtering, sorting, and pagination" },
+                  { "term": "Analytics dashboard", "definition": "Charts driven by live or mock data" },
+                  { "term": "Protected auth flow", "definition": "Login state gating routes" },
+                  { "term": "Form with server validation", "definition": "Built with useActionState and Actions" }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "career",
+            "title": "Career Growth",
+            "sections": [
+              { "id": "career-intro", "kind": "paragraph", "title": null, "text": "React is widely used in frontend and full-stack roles across startups and enterprise teams.", "items": null },
+              {
+                "id": "career-roles",
+                "kind": "heading",
+                "title": "Career Paths",
+                "text": null,
+                "items": [
+                  { "term": "Frontend Engineer", "definition": "Builds interfaces and component libraries" },
+                  { "term": "Full-stack Engineer", "definition": "Uses React with frameworks like Next.js" },
+                  { "term": "React Native Developer", "definition": "Ships mobile apps with shared React skills" },
+                  { "term": "Design-System Engineer", "definition": "Builds reusable, documented component sets" },
+                  { "term": "UI Engineer", "definition": "Focuses on interaction, animation, and polish" }
+                ]
+              }
+            ]
+          }
         ]
       }
     },
@@ -353,19 +772,133 @@
             "id": "overview",
             "title": "Overview",
             "sections": [
-              { "id": "intro", "kind": "heading", "title": "Introduction:", "text": "Backend development handles data storage, business logic, authentication, and APIs that power applications.", "items": null },
-              { "id": "core-concepts", "kind": "heading", "title": "Core Concepts of Backend", "text": null, "items": [
-                { "term": "APIs", "definition": "Endpoints for client communication" },
-                { "term": "Databases", "definition": "Persistent structured storage" },
-                { "term": "Auth", "definition": "Secure user identity and access" },
-                { "term": "Caching", "definition": "Improve performance and scale" },
-                { "term": "Deployment", "definition": "Ship services to production" }
-              ]}
+              {
+                "id": "intro",
+                "kind": "heading",
+                "title": "Introduction:",
+                "text": "Backend development handles data storage, business logic, authentication, and APIs that power applications.",
+                "items": null
+              },
+              {
+                "id": "what-is",
+                "kind": "heading",
+                "title": "What is Backend Development",
+                "text": "The backend is the server-side layer that processes requests, enforces business rules, talks to databases, and returns responses that power the client experience.",
+                "items": null
+              },
+              {
+                "id": "purpose",
+                "kind": "heading",
+                "title": "Why Backend Matters",
+                "text": "Reliable backend systems keep data consistent, secure, and available at scale, forming the foundation every frontend and mobile client depends on.",
+                "items": null
+              },
+              {
+                "id": "core-concepts",
+                "kind": "heading",
+                "title": "Core Concepts of Backend",
+                "text": null,
+                "items": [
+                  { "term": "APIs", "definition": "Endpoints for client communication" },
+                  { "term": "Databases", "definition": "Persistent structured storage" },
+                  { "term": "Auth", "definition": "Secure user identity and access" },
+                  { "term": "Caching", "definition": "Improve performance and scale" },
+                  { "term": "Deployment", "definition": "Ship services to production" },
+                  { "term": "Message queues", "definition": "Decouple services with async events" },
+                  { "term": "Observability", "definition": "Logs, metrics, and traces for debugging" }
+                ]
+              },
+              {
+                "id": "modern-features",
+                "kind": "heading",
+                "title": "Modern Backend Practices",
+                "text": null,
+                "items": [
+                  { "term": "Serverless & edge functions", "definition": "Run code close to users without managing servers" },
+                  { "term": "Containers & orchestration", "definition": "Docker and Kubernetes for consistent deployment" },
+                  { "term": "GraphQL & gRPC", "definition": "Alternatives to REST for flexible or high-performance calls" },
+                  { "term": "Event-driven architecture", "definition": "Message brokers like Kafka, RabbitMQ, or SQS" },
+                  { "term": "Distributed tracing", "definition": "OpenTelemetry for tracking requests across services" },
+                  { "term": "API gateways", "definition": "Centralized routing, auth, and rate limiting" }
+                ]
+              },
+              {
+                "id": "best-practices",
+                "kind": "heading",
+                "title": "Best Practices",
+                "text": null,
+                "items": [
+                  { "term": "Validate all input", "definition": "Never trust data from the client" },
+                  { "term": "Keep secrets out of code", "definition": "Use environment variables or a secrets manager" },
+                  { "term": "Design idempotent APIs", "definition": "Retried requests shouldn't cause duplicate effects" },
+                  { "term": "Add structured logging", "definition": "Make production issues traceable" },
+                  { "term": "Version your APIs", "definition": "Avoid breaking existing clients on change" },
+                  { "term": "Test critical paths", "definition": "Cover auth, payments, and data integrity with integration tests" }
+                ]
+              }
             ]
           },
-          { "id": "examples", "title": "Examples", "sections": [{ "id": "e1", "kind": "paragraph", "title": null, "text": "Explore REST routes, database models, middleware, and logging patterns.", "items": null }] },
-          { "id": "assignments", "title": "Assignments", "sections": [{ "id": "a1", "kind": "paragraph", "title": null, "text": "Build a CRUD API, add JWT auth, and deploy a service to the cloud.", "items": null }] },
-          { "id": "career", "title": "Career Growth", "sections": [{ "id": "c1", "kind": "paragraph", "title": null, "text": "Backend skills lead to roles in API engineering, platform development, and cloud architecture.", "items": null }] }
+          {
+            "id": "examples",
+            "title": "Examples",
+            "sections": [
+              { "id": "examples-intro", "kind": "paragraph", "title": null, "text": "Explore REST routes, database models, middleware, and logging patterns.", "items": null },
+              {
+                "id": "examples-list",
+                "kind": "heading",
+                "title": "Project Ideas",
+                "text": null,
+                "items": [
+                  { "term": "REST resource routes", "definition": "CRUD endpoints with validation and error handling" },
+                  { "term": "Database models & migrations", "definition": "Versioned schema changes over time" },
+                  { "term": "Auth middleware", "definition": "Token verification on protected routes" },
+                  { "term": "Rate-limited public API", "definition": "Protect endpoints from abuse" },
+                  { "term": "Background job queue", "definition": "Retryable async task processing" },
+                  { "term": "Webhook receiver", "definition": "Verify signatures on incoming events" }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "assignments",
+            "title": "Assignments",
+            "sections": [
+              { "id": "assignments-intro", "kind": "paragraph", "title": null, "text": "Build a CRUD API, add JWT auth, and deploy a service to the cloud.", "items": null },
+              {
+                "id": "assignments-list",
+                "kind": "heading",
+                "title": "Practice Tasks",
+                "text": null,
+                "items": [
+                  { "term": "CRUD API", "definition": "Full create/read/update/delete for one resource" },
+                  { "term": "JWT authentication", "definition": "Login, token issuance, and route protection" },
+                  { "term": "Cloud deployment", "definition": "Ship the service to a hosting platform" },
+                  { "term": "Redis caching layer", "definition": "Cache expensive queries with invalidation" },
+                  { "term": "Paginated search endpoint", "definition": "Efficient querying over large datasets" }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "career",
+            "title": "Career Growth",
+            "sections": [
+              { "id": "career-intro", "kind": "paragraph", "title": null, "text": "Backend skills lead to roles in API engineering, platform development, and cloud architecture.", "items": null },
+              {
+                "id": "career-roles",
+                "kind": "heading",
+                "title": "Career Paths",
+                "text": null,
+                "items": [
+                  { "term": "Backend Engineer", "definition": "Builds and maintains APIs and services" },
+                  { "term": "Platform Engineer", "definition": "Builds internal tools and infrastructure" },
+                  { "term": "Cloud / DevOps Engineer", "definition": "Automates infrastructure and deployments" },
+                  { "term": "Site Reliability Engineer", "definition": "Keeps production systems available and fast" },
+                  { "term": "Solutions Architect", "definition": "Designs system-wide technical strategy" }
+                ]
+              }
+            ]
+          }
         ]
       }
     },
@@ -381,19 +914,132 @@
             "id": "overview",
             "title": "Overview",
             "sections": [
-              { "id": "intro", "kind": "heading", "title": "Introduction:", "text": "Data structures organize information so algorithms can process it efficiently in software systems.", "items": null },
-              { "id": "core-concepts", "kind": "heading", "title": "Core Concepts", "text": null, "items": [
-                { "term": "Arrays", "definition": "Indexed collections of values" },
-                { "term": "Linked lists", "definition": "Node-based sequential structures" },
-                { "term": "Stacks & queues", "definition": "LIFO and FIFO processing" },
-                { "term": "Trees", "definition": "Hierarchical data organization" },
-                { "term": "Hash maps", "definition": "Fast key-value lookups" }
-              ]}
+              {
+                "id": "intro",
+                "kind": "heading",
+                "title": "Introduction:",
+                "text": "Data structures organize information so algorithms can process it efficiently in software systems.",
+                "items": null
+              },
+              {
+                "id": "what-is",
+                "kind": "heading",
+                "title": "What Are Data Structures & Algorithms",
+                "text": "A data structure defines how data is stored and accessed; an algorithm defines the steps to solve a problem using that data. Choosing the right pair determines how fast and memory-efficient a program is.",
+                "items": null
+              },
+              {
+                "id": "purpose",
+                "kind": "heading",
+                "title": "Why DSA Matters",
+                "text": "Strong DSA fundamentals help you reason about performance at scale, avoid slow or memory-heavy solutions, and communicate trade-offs clearly — skills tested heavily in technical interviews.",
+                "items": null
+              },
+              {
+                "id": "core-concepts",
+                "kind": "heading",
+                "title": "Core Concepts",
+                "text": null,
+                "items": [
+                  { "term": "Arrays", "definition": "Indexed collections of values" },
+                  { "term": "Linked lists", "definition": "Node-based sequential structures" },
+                  { "term": "Stacks & queues", "definition": "LIFO and FIFO processing" },
+                  { "term": "Trees", "definition": "Hierarchical data organization" },
+                  { "term": "Hash maps", "definition": "Fast key-value lookups" },
+                  { "term": "Graphs", "definition": "Model networks and relationships" },
+                  { "term": "Heaps", "definition": "Efficient priority-based access" }
+                ]
+              },
+              {
+                "id": "modern-features",
+                "kind": "heading",
+                "title": "Key Techniques & Patterns",
+                "text": null,
+                "items": [
+                  { "term": "Two pointers & sliding window", "definition": "Efficient scans over arrays and strings" },
+                  { "term": "Divide and conquer", "definition": "Break problems into smaller independent subproblems" },
+                  { "term": "Dynamic programming", "definition": "Memoization and tabulation to avoid recomputation" },
+                  { "term": "Greedy algorithms", "definition": "Locally optimal choices that yield a global solution" },
+                  { "term": "BFS & DFS", "definition": "Systematic traversal of trees and graphs" },
+                  { "term": "Binary search on the answer", "definition": "Search a solution space, not just a sorted array" },
+                  { "term": "Union-Find", "definition": "Efficient grouping and connectivity queries" }
+                ]
+              },
+              {
+                "id": "best-practices",
+                "kind": "heading",
+                "title": "Best Practices",
+                "text": null,
+                "items": [
+                  { "term": "State complexity upfront", "definition": "Always reason about time and space Big-O" },
+                  { "term": "Start brute-force, then optimize", "definition": "Get a correct baseline before improving it" },
+                  { "term": "Test edge cases", "definition": "Empty input, single element, duplicates, and extremes" },
+                  { "term": "Explain your approach aloud", "definition": "Practice communicating reasoning, not just code" },
+                  { "term": "Match structure to access pattern", "definition": "Pick the structure that fits how data is read and written" },
+                  { "term": "Learn patterns, not solutions", "definition": "Recognize the technique instead of memorizing answers" }
+                ]
+              }
             ]
           },
-          { "id": "examples", "title": "Examples", "sections": [{ "id": "e1", "kind": "paragraph", "title": null, "text": "Solve search, sorting, traversal, and optimization problems step by step.", "items": null }] },
-          { "id": "assignments", "title": "Assignments", "sections": [{ "id": "a1", "kind": "paragraph", "title": null, "text": "Implement core structures, analyze complexity, and practice interview questions.", "items": null }] },
-          { "id": "career", "title": "Career Growth", "sections": [{ "id": "c1", "kind": "paragraph", "title": null, "text": "Strong DSA fundamentals support software engineering interviews and system design.", "items": null }] }
+          {
+            "id": "examples",
+            "title": "Examples",
+            "sections": [
+              { "id": "examples-intro", "kind": "paragraph", "title": null, "text": "Solve search, sorting, traversal, and optimization problems step by step.", "items": null },
+              {
+                "id": "examples-list",
+                "kind": "heading",
+                "title": "Project Ideas",
+                "text": null,
+                "items": [
+                  { "term": "LRU cache", "definition": "Combine a hash map with a doubly linked list" },
+                  { "term": "Cycle detection in a graph", "definition": "DFS with visited-state tracking" },
+                  { "term": "Shortest path (Dijkstra)", "definition": "Weighted graph traversal with a priority queue" },
+                  { "term": "Sorting visualizer", "definition": "Step through common sorting algorithms" },
+                  { "term": "Balanced tree operations", "definition": "Insert, delete, and rebalance a BST" }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "assignments",
+            "title": "Assignments",
+            "sections": [
+              { "id": "assignments-intro", "kind": "paragraph", "title": null, "text": "Implement core structures, analyze complexity, and practice interview questions.", "items": null },
+              {
+                "id": "assignments-list",
+                "kind": "heading",
+                "title": "Practice Tasks",
+                "text": null,
+                "items": [
+                  { "term": "Implement core structures from scratch", "definition": "Stack, queue, linked list, and hash map" },
+                  { "term": "Complexity analysis exercises", "definition": "Annotate time and space complexity for each solution" },
+                  { "term": "Curated array & string problems", "definition": "20 problems covering common interview patterns" },
+                  { "term": "Binary search tree", "definition": "Build, balance, and traverse a BST" },
+                  { "term": "Trie for autocomplete", "definition": "Prefix-based search structure" }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "career",
+            "title": "Career Growth",
+            "sections": [
+              { "id": "career-intro", "kind": "paragraph", "title": null, "text": "Strong DSA fundamentals support software engineering interviews and system design.", "items": null },
+              {
+                "id": "career-roles",
+                "kind": "heading",
+                "title": "Career Paths",
+                "text": null,
+                "items": [
+                  { "term": "Software Engineer", "definition": "Applies DSA to everyday feature and performance work" },
+                  { "term": "Backend / Systems Engineer", "definition": "Designs data-intensive, high-throughput systems" },
+                  { "term": "Competitive Programmer", "definition": "Solves algorithmic problems under time pressure" },
+                  { "term": "Technical Interviewer / Coach", "definition": "Evaluates and mentors problem-solving skills" }
+                ]
+              }
+            ]
+          }
         ]
       }
     },
@@ -409,19 +1055,133 @@
             "id": "overview",
             "title": "Overview",
             "sections": [
-              { "id": "intro", "kind": "heading", "title": "Introduction:", "text": "API integration connects your application to third-party services for payments, maps, auth, AI, and more.", "items": null },
-              { "id": "core-concepts", "kind": "heading", "title": "Core Concepts of APIs", "text": null, "items": [
-                { "term": "REST", "definition": "Resource-based HTTP communication" },
-                { "term": "JSON", "definition": "Common data exchange format" },
-                { "term": "Authentication", "definition": "API keys, OAuth, and tokens" },
-                { "term": "Rate limits", "definition": "Control request volume" },
-                { "term": "Error handling", "definition": "Graceful failure and retries" }
-              ]}
+              {
+                "id": "intro",
+                "kind": "heading",
+                "title": "Introduction:",
+                "text": "API integration connects your application to third-party services for payments, maps, auth, AI, and more.",
+                "items": null
+              },
+              {
+                "id": "what-is",
+                "kind": "heading",
+                "title": "What is an API",
+                "text": "An API (Application Programming Interface) is a defined contract that lets one piece of software request data or actions from another, without needing to know its internal implementation.",
+                "items": null
+              },
+              {
+                "id": "purpose",
+                "kind": "heading",
+                "title": "Why API Integration Matters",
+                "text": "Most modern products are assembled from many services rather than built from scratch. Reliable API integration lets teams ship faster by reusing payments, auth, AI, and data providers.",
+                "items": null
+              },
+              {
+                "id": "core-concepts",
+                "kind": "heading",
+                "title": "Core Concepts of APIs",
+                "text": null,
+                "items": [
+                  { "term": "REST", "definition": "Resource-based HTTP communication" },
+                  { "term": "JSON", "definition": "Common data exchange format" },
+                  { "term": "Authentication", "definition": "API keys, OAuth, and tokens" },
+                  { "term": "Rate limits", "definition": "Control request volume" },
+                  { "term": "Error handling", "definition": "Graceful failure and retries" },
+                  { "term": "Webhooks", "definition": "Servers push events to your app in real time" },
+                  { "term": "Versioning", "definition": "Evolve APIs without breaking existing clients" }
+                ]
+              },
+              {
+                "id": "modern-features",
+                "kind": "heading",
+                "title": "Modern API Patterns",
+                "text": null,
+                "items": [
+                  { "term": "GraphQL", "definition": "Flexible queries that fetch exactly the fields you need" },
+                  { "term": "gRPC", "definition": "High-performance, typed service-to-service calls" },
+                  { "term": "Webhooks", "definition": "Event-driven integrations instead of constant polling" },
+                  { "term": "OAuth 2.0 / OpenID Connect", "definition": "Standardized delegated authentication and authorization" },
+                  { "term": "OpenAPI / Swagger", "definition": "Machine-readable, self-documenting API contracts" },
+                  { "term": "API gateways", "definition": "Centralized routing, auth, and rate limiting at the edge" }
+                ]
+              },
+              {
+                "id": "best-practices",
+                "kind": "heading",
+                "title": "Best Practices",
+                "text": null,
+                "items": [
+                  { "term": "Handle rate limits gracefully", "definition": "Retry with exponential backoff" },
+                  { "term": "Never hardcode API keys", "definition": "Use environment variables or a secrets manager" },
+                  { "term": "Validate every response", "definition": "External services can fail or change unexpectedly" },
+                  { "term": "Version your integrations", "definition": "Track upstream API version changes deliberately" },
+                  { "term": "Use idempotency keys", "definition": "Make retried requests safe to repeat" },
+                  { "term": "Document request/response shapes", "definition": "Keep integration contracts easy to maintain" }
+                ]
+              }
             ]
           },
-          { "id": "examples", "title": "Examples", "sections": [{ "id": "e1", "kind": "paragraph", "title": null, "text": "Integrate weather, payment, and AI APIs with secure request handling.", "items": null }] },
-          { "id": "assignments", "title": "Assignments", "sections": [{ "id": "a1", "kind": "paragraph", "title": null, "text": "Build an API client, add caching, and document endpoints with examples.", "items": null }] },
-          { "id": "career", "title": "Career Growth", "sections": [{ "id": "c1", "kind": "paragraph", "title": null, "text": "API skills are critical for full-stack developers and integration engineers.", "items": null }] }
+          {
+            "id": "examples",
+            "title": "Examples",
+            "sections": [
+              { "id": "examples-intro", "kind": "paragraph", "title": null, "text": "Integrate weather, payment, and AI APIs with secure request handling.", "items": null },
+              {
+                "id": "examples-list",
+                "kind": "heading",
+                "title": "Project Ideas",
+                "text": null,
+                "items": [
+                  { "term": "Weather API client", "definition": "Fetch, cache, and display live data" },
+                  { "term": "Payment integration", "definition": "Secure checkout with a payments provider" },
+                  { "term": "AI API integration", "definition": "Send prompts and stream responses" },
+                  { "term": "OAuth2 login flow", "definition": "Delegated sign-in with a third-party provider" },
+                  { "term": "Webhook listener", "definition": "Verify signatures on incoming events" },
+                  { "term": "Typed GraphQL client", "definition": "Query exactly the fields your UI needs" }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "assignments",
+            "title": "Assignments",
+            "sections": [
+              { "id": "assignments-intro", "kind": "paragraph", "title": null, "text": "Build an API client, add caching, and document endpoints with examples.", "items": null },
+              {
+                "id": "assignments-list",
+                "kind": "heading",
+                "title": "Practice Tasks",
+                "text": null,
+                "items": [
+                  { "term": "Reusable API client", "definition": "Wrap a third-party API with clean methods" },
+                  { "term": "Response caching layer", "definition": "Reduce redundant calls and improve speed" },
+                  { "term": "Documented endpoints", "definition": "Write clear request/response examples" },
+                  { "term": "Retry-with-backoff wrapper", "definition": "Handle transient failures automatically" },
+                  { "term": "Webhook notification system", "definition": "React to external events in real time" }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "career",
+            "title": "Career Growth",
+            "sections": [
+              { "id": "career-intro", "kind": "paragraph", "title": null, "text": "API skills are critical for full-stack developers and integration engineers.", "items": null },
+              {
+                "id": "career-roles",
+                "kind": "heading",
+                "title": "Career Paths",
+                "text": null,
+                "items": [
+                  { "term": "Integration Engineer", "definition": "Connects internal systems with third-party services" },
+                  { "term": "Backend / API Engineer", "definition": "Designs and maintains public-facing APIs" },
+                  { "term": "Solutions Engineer", "definition": "Helps customers integrate a product's API" },
+                  { "term": "Platform Engineer", "definition": "Builds the infrastructure APIs run on" },
+                  { "term": "Developer Experience Engineer", "definition": "Improves docs, SDKs, and API usability" }
+                ]
+              }
+            ]
+          }
         ]
       }
     }

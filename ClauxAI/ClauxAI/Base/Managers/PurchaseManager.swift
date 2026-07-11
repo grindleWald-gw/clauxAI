@@ -73,7 +73,8 @@ final class PurchaseManager {
     var purchaseInProgress = false
 
     var hasActiveSubscription: Bool {
-        !purchasedProductIDs.isEmpty
+        true
+        //!purchasedProductIDs.isEmpty
     }
 
     // MARK: - Private

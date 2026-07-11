@@ -121,16 +121,10 @@ struct DualModeModelPanel: View {
                         .controlSize(.small)
                         .tint(Color.textWhite)
                         .frame(maxWidth: .infinity, alignment: .leading)
-                } else if let attributed = try? AttributedString(markdown: text) {
-                    Text(attributed)
                 } else {
-                    Text(text)
+                    MarkdownContentView(text: text, fontSize: 15, lineSpacing: 5, textColor: .textWhite)
                 }
             }
-            .font(.sfProDisplayRegular(15))
-            .foregroundStyle(Color.textWhite)
-            .multilineTextAlignment(.leading)
-            .lineSpacing(5)
             .frame(maxWidth: .infinity, alignment: .leading)
         }
     }

@@ -263,19 +263,8 @@ struct SmartToolOutputSection: View {
                 .foregroundStyle(Color.textWhite)
 
             ScrollView {
-                Group {
-                    if let attributed = try? AttributedString(markdown: text) {
-                        Text(attributed)
-                    } else {
-                        Text(text)
-                    }
-                }
-                .font(.sfProDisplayRegular(16))
-                .foregroundStyle(Color.textWhite)
-                .multilineTextAlignment(.leading)
-                .lineSpacing(4)
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(16)
+                MarkdownContentView(text: text, fontSize: 16, lineSpacing: 4, textColor: .textWhite)
+                    .padding(16)
             }
             .frame(minHeight: 160, maxHeight: 280)
             .background(Color(hex: "#1C1C1C"))
