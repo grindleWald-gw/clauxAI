@@ -13,6 +13,7 @@ struct ClauxAIApp: App {
     init () {
         printAllFonts()
         FirebaseApp.configure()
+        ReviewPromptManager.shared.recordAppLaunch()
 
         if let key = ProcessInfo.processInfo.environment["ANTHROPIC_API_KEY"], !key.isEmpty {
             APIConfiguration.apiKey = key

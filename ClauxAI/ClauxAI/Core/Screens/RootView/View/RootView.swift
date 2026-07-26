@@ -5,10 +5,12 @@
 //  Created by Yasir Shah on 18/05/2026.
 //
 
+import StoreKit
 import SwiftUI
 
 struct RootView: View {
 
+    @Environment(\.requestReview) private var requestReview
     @Bindable private var consentPresenter = AIConsentPresenter.shared
     @State private var sidebarSelection: SidebarDestination = .home
     @State private var screen: AppScreen = .home
@@ -32,6 +34,8 @@ struct RootView: View {
         .background(Color.appMainbg)
         .onAppear {
             CreditManager.shared.onRequirePro = { showPremium = true }
+            ReviewPromptManager.shared.requestReview = { requestReview() }
+            ReviewPromptManager.shared.maybeRequestReviewForLaunch()
         }
         .sheet(isPresented: $showPremium) {
             PremiumView()

@@ -194,6 +194,7 @@ struct ResponseVC: View {
                     entries[assistantIndex].text = "No response received."
                 }
             }
+            ReviewPromptManager.shared.recordFirstSuccessfulUse()
         } catch {
             errorMessage = error.localizedDescription
             if assistantIndex < entries.count {
@@ -248,6 +249,7 @@ struct ResponseVC: View {
                     entries[assistantIndex].gptText = "No response received."
                 }
             }
+            ReviewPromptManager.shared.recordFirstSuccessfulUse()
         } catch {
             errorMessage = error.localizedDescription
             if assistantIndex < entries.count {

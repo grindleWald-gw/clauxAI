@@ -74,7 +74,7 @@ final class PurchaseManager {
 
     var hasActiveSubscription: Bool {
         true
-        //!purchasedProductIDs.isEmpty
+     // !purchasedProductIDs.isEmpty
     }
 
     // MARK: - Private

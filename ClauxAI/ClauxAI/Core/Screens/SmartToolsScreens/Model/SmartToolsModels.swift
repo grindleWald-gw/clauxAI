@@ -42,6 +42,7 @@ enum SmartToolGeneration {
                     output.wrappedValue = try await task()
                     if !output.wrappedValue.isEmpty {
                         CreditManager.shared.recordSmartToolGeneration()
+                        ReviewPromptManager.shared.recordFirstSuccessfulUse()
                         showResult?.wrappedValue = true
                     }
                 } catch {
