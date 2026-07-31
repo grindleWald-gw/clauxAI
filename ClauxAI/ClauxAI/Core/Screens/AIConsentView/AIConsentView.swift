@@ -1,6 +1,6 @@
 //
 //  AIConsentView.swift
-//  ClauxAI
+//  CL.AI
 //
 //  Created by Yasir Shah on 04/07/2026.
 //

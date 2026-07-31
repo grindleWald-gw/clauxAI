@@ -1,6 +1,6 @@
 //
 //  PremiumView.swift
-//  ClauxAI
+//  CL.AI
 //
 //  Created by Yasir Shah on 28/06/2026.
 //

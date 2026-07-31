@@ -1,6 +1,6 @@
 //
 //  DualModeResponseView.swift
-//  ClauxAI
+//  CL.AI
 //
 //  Side-by-side Claude + GPT response panels for dual mode.
 //

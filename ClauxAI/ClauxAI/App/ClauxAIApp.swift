@@ -1,6 +1,6 @@
 //
-//  ClauxAIApp.swift
-//  ClauxAI
+//  CL.AIApp.swift
+//  CL.AI
 //
 //  Created by Yasir Shah on 13/05/2026.
 //
@@ -9,7 +9,7 @@ import SwiftUI
 import FirebaseCore
 
 @main
-struct ClauxAIApp: App {
+struct CLAIApp: App {
     init () {
         printAllFonts()
         FirebaseApp.configure()

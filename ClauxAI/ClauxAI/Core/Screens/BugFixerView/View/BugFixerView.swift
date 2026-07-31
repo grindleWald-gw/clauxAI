@@ -1,6 +1,6 @@
 //
 //  BugFixerView.swift
-//  ClauxAI
+//  CL.AI
 //
 //  Created by Yasir Shah on 31/05/2026.
 //

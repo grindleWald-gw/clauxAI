@@ -1,6 +1,6 @@
 //
 //  ReviewPromptManager.swift
-//  ClauxAI
+//  CL.AI
 //
 
 import Foundation
@@ -36,7 +36,7 @@ final class ReviewPromptManager {
         set { UserDefaults.standard.set(newValue, forKey: StorageKey.hasPromptedForFirstUse) }
     }
 
-    /// Call once per process launch (from `ClauxAIApp.init`), before `requestReview` is wired.
+    /// Call once per process launch (from `CL.AIApp.init`), before `requestReview` is wired.
     func recordAppLaunch() {
         launchCount += 1
     }

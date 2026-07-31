@@ -1,6 +1,6 @@
 //
 //  APIConstants.swift
-//  ClauxAI
+//  CL.AI
 //
 //  Created by Yasir Shah on 30/05/2026.
 //

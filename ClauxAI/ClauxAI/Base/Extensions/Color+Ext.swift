@@ -1,6 +1,6 @@
 //
 //  Color+Ext.swift
-//  ClauxAI
+//  CL.AI
 //
 //  Created by Yasir Shah on 18/05/2026.
 //

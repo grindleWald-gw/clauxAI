@@ -1,6 +1,6 @@
 //
 //  OpenAIAPI.swift
-//  ClauxAI
+//  CL.AI
 //
 //  OpenAI Chat Completions API (streaming) for dual-mode GPT responses.
 //

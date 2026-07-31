@@ -1,6 +1,6 @@
 //
 //  SmartToolsView.swift
-//  ClauxAI
+//  CL.AI
 //
 //  Created by Yasir Shah on 09/06/2026.
 //

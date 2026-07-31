@@ -16,9 +16,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "08130B0F2FB4E96700B9F7A2"
-               BuildableName = "ClauxAI.app"
-               BlueprintName = "ClauxAI"
-               ReferencedContainer = "container:ClauxAI.xcodeproj">
+               BuildableName = "CL.AI.app"
+               BlueprintName = "CL.AI"
+               ReferencedContainer = "container:CL.AI.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -45,9 +45,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "08130B0F2FB4E96700B9F7A2"
-            BuildableName = "ClauxAI.app"
-            BlueprintName = "ClauxAI"
-            ReferencedContainer = "container:ClauxAI.xcodeproj">
+            BuildableName = "CL.AI.app"
+            BlueprintName = "CL.AI"
+            ReferencedContainer = "container:CL.AI.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -62,9 +62,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "08130B0F2FB4E96700B9F7A2"
-            BuildableName = "ClauxAI.app"
-            BlueprintName = "ClauxAI"
-            ReferencedContainer = "container:ClauxAI.xcodeproj">
+            BuildableName = "CL.AI.app"
+            BlueprintName = "CL.AI"
+            ReferencedContainer = "container:CL.AI.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

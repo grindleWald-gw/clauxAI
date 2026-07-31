@@ -1,6 +1,6 @@
 //
 //  ChatInputView.swift
-//  ClauxAI
+//  CL.AI
 //
 //  Created by Yasir Shah on 13/05/2026.
 //

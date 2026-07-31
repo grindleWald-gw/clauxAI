@@ -1,6 +1,6 @@
 //
 //  ClauxAPIService.swift
-//  ClauxAI
+//  CL.AI
 //
 //  High-level API layer mapping app features to Claude /v1/messages.
 //

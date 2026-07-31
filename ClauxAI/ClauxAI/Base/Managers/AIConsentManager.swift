@@ -1,6 +1,6 @@
 //
 //  AIConsentManager.swift
-//  ClauxAI
+//  CL.AI
 //
 //  Created by Yasir Shah on 04/07/2026.
 //
@@ -9,7 +9,7 @@ import Foundation
 import Observation
 
 enum AIConsentManager {
-    private static let key = "ClauxAI.HasAgreedAIConsent"
+    private static let key = "CL.AI.HasAgreedAIConsent"
 
     static var hasAgreed: Bool {
         UserDefaults.standard.bool(forKey: key)

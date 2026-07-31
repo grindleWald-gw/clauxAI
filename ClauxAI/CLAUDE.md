@@ -8,10 +8,10 @@ ClauxAI is a **macOS** SwiftUI app (uses AppKit, StoreKit, `.windowStyle(.hidden
 
 ## Build & run
 
-Build/run only via Xcode (`ClauxAI.xcodeproj`, scheme `ClauxAI`) or `xcodebuild`:
+Build/run only via Xcode (`CL.AI.xcodeproj`, scheme `CL.AI`) or `xcodebuild`:
 
 ```bash
-xcodebuild -project ClauxAI.xcodeproj -scheme ClauxAI -configuration Debug build
+xcodebuild -project CL.AI.xcodeproj -scheme CL.AI -configuration Debug build
 ```
 
 There is no test target in this project — do not try to invoke `xcodebuild test`.

@@ -1,6 +1,6 @@
 //
 //  SidebarView.swift
-//  ClauxAI
+//  CL.AI
 //
 //  Created by Yasir Shah on 18/05/2026.
 //
@@ -51,7 +51,7 @@ extension SidebarView {
                 .frame(width: 50, height: 50)
             
             VStack(alignment: .leading){
-                Text("Claux AI")
+                Text("CL.AI Chatbot")
                     .font(.sfProDisplayBold(20))
                     .foregroundStyle(Color.textWhite)
                 

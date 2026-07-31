@@ -75,7 +75,7 @@
 
 /* Begin PBXFileReference section */
 		080113D3301686CF00E6CA50 /* ReviewPromptManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewPromptManager.swift; sourceTree = "<group>"; };
-		08130B102FB4E96800B9F7A2 /* ClauxAI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClauxAI.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		08130B102FB4E96800B9F7A2 /* CL.AI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CL.AI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		08130B1E2FB4EB9900B9F7A2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		08130B1F2FB4EB9900B9F7A2 /* ClauxAIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClauxAIApp.swift; sourceTree = "<group>"; };
 		08130B2C2FB4ED6500B9F7A2 /* ChatInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatInputView.swift; sourceTree = "<group>"; };
@@ -165,7 +165,7 @@
 		08130B112FB4E96800B9F7A2 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				08130B102FB4E96800B9F7A2 /* ClauxAI.app */,
+				08130B102FB4E96800B9F7A2 /* CL.AI.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -581,9 +581,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		08130B0F2FB4E96700B9F7A2 /* ClauxAI */ = {
+		08130B0F2FB4E96700B9F7A2 /* CL.AI */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 08130B1B2FB4E96900B9F7A2 /* Build configuration list for PBXNativeTarget "ClauxAI" */;
+			buildConfigurationList = 08130B1B2FB4E96900B9F7A2 /* Build configuration list for PBXNativeTarget "CL.AI" */;
 			buildPhases = (
 				08130B0C2FB4E96700B9F7A2 /* Sources */,
 				08130B0D2FB4E96700B9F7A2 /* Frameworks */,
@@ -593,7 +593,7 @@
 			);
 			dependencies = (
 			);
-			name = ClauxAI;
+			name = "CL.AI";
 			packageProductDependencies = (
 				0874A1B92FF8208F00D7BF42 /* FirebaseAnalytics */,
 				0874A1BB2FF8208F00D7BF42 /* FirebaseAppCheck */,
@@ -603,8 +603,8 @@
 				0874A1C62FF84B2800D7BF42 /* FirebaseDatabase */,
 				080113BA3015115600E6CA50 /* FirebaseAuth */,
 			);
-			productName = ClauxAI;
-			productReference = 08130B102FB4E96800B9F7A2 /* ClauxAI.app */;
+			productName = "CL.AI";
+			productReference = 08130B102FB4E96800B9F7A2 /* CL.AI.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -622,7 +622,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 08130B0B2FB4E96700B9F7A2 /* Build configuration list for PBXProject "ClauxAI" */;
+			buildConfigurationList = 08130B0B2FB4E96700B9F7A2 /* Build configuration list for PBXProject "CL.AI" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -639,7 +639,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				08130B0F2FB4E96700B9F7A2 /* ClauxAI */,
+				08130B0F2FB4E96700B9F7A2 /* CL.AI */,
 			);
 		};
 /* End PBXProject section */
@@ -917,7 +917,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		08130B0B2FB4E96700B9F7A2 /* Build configuration list for PBXProject "ClauxAI" */ = {
+		08130B0B2FB4E96700B9F7A2 /* Build configuration list for PBXProject "CL.AI" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				08130B192FB4E96900B9F7A2 /* Debug */,
@@ -926,7 +926,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		08130B1B2FB4E96900B9F7A2 /* Build configuration list for PBXNativeTarget "ClauxAI" */ = {
+		08130B1B2FB4E96900B9F7A2 /* Build configuration list for PBXNativeTarget "CL.AI" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				08130B1C2FB4E96900B9F7A2 /* Debug */,

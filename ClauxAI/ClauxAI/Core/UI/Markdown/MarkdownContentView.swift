@@ -1,6 +1,6 @@
 //
 //  MarkdownContentView.swift
-//  ClauxAI
+//  CL.AI
 //
 //  Renders AI responses (chat, bug fixer, smart tools) as proper block-level
 //  markdown — headings, lists, code blocks, quotes — instead of raw text.

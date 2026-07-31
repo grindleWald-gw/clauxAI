@@ -1,6 +1,6 @@
 //
 //  SplashView.swift
-//  ClauxAI
+//  CL.AI
 //
 //  Created by Yasir Shah on 04/07/2026.
 //
@@ -50,14 +50,6 @@ struct SplashView: View {
                 Image(.iconSplash)
                     .resizable()
                     .frame(width: 150, height: 150)
-
-//                Text("Claux AI")
-//                    .font(.sfProDisplayBold(30))
-//                    .foregroundStyle(Color.textWhite)
-//
-//                Text("AI Developers Workspace")
-//                    .font(.sfProDisplayRegular(16))
-//                    .foregroundStyle(Color.tetxGray)
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)

@@ -1,6 +1,6 @@
 //
 //  ArticleWriter.swift
-//  ClauxAI
+//  CL.AI
 //
 //  Created by Yasir Shah on 21/06/2026.
 //
