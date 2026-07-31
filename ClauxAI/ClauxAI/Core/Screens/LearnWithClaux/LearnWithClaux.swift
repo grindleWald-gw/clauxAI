@@ -68,7 +68,7 @@ struct LearnWithClaux: View {
     private var learnHeader: some View {
         HStack(alignment: .center) {
             HStack(spacing: 0) {
-                Text("Claux AI")
+                Text("CL.AI")
                 Text(" / Learn with Claux")
                  
             }

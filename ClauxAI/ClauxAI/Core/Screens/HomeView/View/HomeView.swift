@@ -37,7 +37,7 @@ struct HomeView: View {
     var body: some View {
         VStack(spacing: 0) {
             AppHeaderView(
-                text: "Claux AI / Home",
+                text: "CL.AI / Home",
                 showsNewChatButton: true,
                 onNewChat: startNewChat,
                 onSettings: onSettings
@@ -97,7 +97,7 @@ private extension HomeView {
         (
             Text("Meet ")
                 .foregroundStyle(Color.textWhite)
-            + Text("Claux AI,")
+            + Text("CL.AI,")
                 .foregroundStyle(Color.appOrange)
             + Text(" Your Everyday Helper!")
                 .foregroundStyle(Color.textWhite)

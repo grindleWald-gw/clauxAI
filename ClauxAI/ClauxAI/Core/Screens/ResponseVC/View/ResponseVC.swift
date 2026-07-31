@@ -51,7 +51,7 @@ struct ResponseVC: View {
     var body: some View {
         VStack(spacing: 0) {
             AppHeaderView(
-                text: "Claux AI / Response",
+                text: "CL.AI / Response",
                 showsNewChatButton: true,
                 onNewChat: onNewChat,
                 onSettings: onSettings

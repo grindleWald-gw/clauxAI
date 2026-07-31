@@ -37,7 +37,7 @@ struct SmartToolsView: View {
     private var smartToolsHeader: some View {
         HStack(alignment: .center) {
             HStack(spacing: 0) {
-                Text("Claux AI")
+                Text("CL.AI")
                 Text(" / Smart Tools")
             }
             .font(.sfProDisplaySemiBold(20))

@@ -32,7 +32,7 @@ struct BugFixerView: View {
 
     var body: some View {
         VStack(spacing: 0) {
-            AppHeaderView(text: "Claux AI / Bug Fixer", onSettings: onSettings)
+            AppHeaderView(text: "CL.AI / Bug Fixer", onSettings: onSettings)
 
             VStack(spacing: 20) {
                 if !purchaseManager.hasActiveSubscription {

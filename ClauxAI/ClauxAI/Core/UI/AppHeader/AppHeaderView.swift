@@ -67,7 +67,7 @@ struct NewChatHeaderButton: View {
 
 #Preview {
     AppHeaderView(
-        text: "Claux AI / Home",
+        text: "CL.AI / Home",
         showsNewChatButton: true,
         onNewChat: {},
         onSettings: {}

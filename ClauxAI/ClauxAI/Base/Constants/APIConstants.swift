@@ -98,7 +98,7 @@ extension SmartToolDestination {
 enum ClauxToolPrompts {
 
     static let chatBase = """
-    You are Claux AI, a helpful assistant inside the Claux macOS app. \
+    You are CL.AI, a helpful assistant inside the Claux macOS app. \
     Be clear, accurate, and concise. Format responses with markdown when useful.
     """
 

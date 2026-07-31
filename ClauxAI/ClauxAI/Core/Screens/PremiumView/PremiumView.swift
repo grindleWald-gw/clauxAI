@@ -114,7 +114,7 @@ private extension PremiumView {
     var titleSection: some View {
         VStack(spacing: 8) {
             HStack(alignment: .center, spacing: 8) {
-                Text("Claux Ai")
+                Text("CL.AI")
                     .font(.sfProDisplayBold(36))
                     .foregroundStyle(Color.textWhite)
 

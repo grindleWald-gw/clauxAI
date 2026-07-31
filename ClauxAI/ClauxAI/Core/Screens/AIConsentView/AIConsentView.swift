@@ -78,7 +78,7 @@ private extension AIConsentView {
                 .foregroundStyle(Color.textWhite)
 
             Text(
-                "Claux AI sends your prompts, attachments, and generated content to third-party AI providers (such as Anthropic and OpenAI) to power chat, smart tools, and other AI features."
+                "CL.AI sends your prompts, attachments, and generated content to third-party AI providers (such as Anthropic and OpenAI) to power chat, smart tools, and other AI features."
             )
             .font(.sfProDisplayRegular(15))
             .foregroundStyle(AIConsentColors.mutedText)
