@@ -10,10 +10,10 @@ import StoreKit
 import Observation
 
 enum ProductsCore: String, CaseIterable, Identifiable {
-    case weekly = "com.CL.AIchat.subscription.weekly"
-    case monthly = "com.CL.AIchat.subscription.monthly"
-    case yearly = "com.CL.AIchat.subscription.yearly"
-    case lifetime = "com.CL.AIchat.subscription.lifetimeplan"
+    case weekly = "com.clauxaichat.subscription.weekly"
+    case monthly = "com.clauxaichat.subscription.monthly"
+    case yearly = "com.clauxaichat.subscription.yearly"
+    case lifetime = "com.clauxaichat.subscription.lifetimeplan"
 
     var id: String { rawValue }
 
@@ -73,8 +73,8 @@ final class PurchaseManager {
     var purchaseInProgress = false
 
     var hasActiveSubscription: Bool {
-        true
-     // !purchasedProductIDs.isEmpty
+   
+      !purchasedProductIDs.isEmpty
     }
 
     // MARK: - Private
